@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>ReRoute</title>
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="static/main.js"></script>
+<link rel="stylesheet" href="static/styles.css">
+</head>
+<body>
+
+<a class= "home" href="/">Home</a>
+{% if "user_id" not in session %}
+<a class= "register" href="/register">Register</a>
+{% endif %}
+{% if "user_id" in session %}
+    <a class= "login" href="/logout">Logout</a>
+{% else %}
+    <a class= "logout"href="/login">Login</a>
+{% endif %}
+
+
+
+{% for flash in get_flashed_messages() %}
+  {{ flash }}
+{% endfor %}
+
+{% block content %} 
+  put your content here 
+{% endblock %}
+
+
+
+</body>
+</html>

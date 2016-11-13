@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<br>
+
+<h1> {{ info.bus_name }}</h1>
+<h1> {{ info.bus_lname }}</h1>
+<p> This bus is rated at an: </p> <h1> {{ average }}</h1> 
+
+{% if "user_id" in session %}
+  <a href="/ratings">Rate this Bus</a>
+{% endif %}
+
+<br>
+<br>
+<br>
+
+what poeple are saying about the {{ info.bus_name }}<br>
+
+<ul>
+{% for comments in sessioned_bus_comments %}
+    {% for comment in comments %}
+    <li>{{ sessioned_bus_comments }}</li>
+    {% endfor %}
+{% endfor %}
+</ul>
+
+
+{% endblock %}

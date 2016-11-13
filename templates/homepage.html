@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block content %}
+
+  <h1>Reroute</h1>
+
+  <h2>Reroute, pointing you in the right direction</h2>
+
+
+  <h3>Pick a Bus Line</h3>
+
+    <ul class="dropdown">
+    <form action='/bus_detail', method="get">
+    <select name="bus">
+    {% for bus in buses %}
+    <option value="{{ bus.bus_name }}">{{ bus.bus_name }}
+    {% endfor %}
+    </select>
+    <br><br>
+    <input type="submit">
+    </form>
+    </ul>
+
+
+
+<form action="#">
+  <div>
+    <input type="hidden" name="datatosendback" id="datatosendback">
+  </div>
+</form>
+
+<p>Click the button to get your coordinates.</p>
+
+<button onclick="showlocation()">Try It</button>
+
+<p id="demo"></p>
+
+
+<script>
+
+function showlocation() {
+   // One-shot position request.
+   console.log('clicked');
+   navigator.geolocation.getCurrentPosition(callback);
+}
+
+function callback(position) {
+   var lat = position.coords.latitude;
+   var long = position.coords.longitude
+   console.log(lat, long);
+   $.get('/stop_info',{'lat': lat, 'long': long})
+}
+
+
+
+</script>
+
+
+
+
+
+<!-- ################################################################################ -->
+
+  
+
+{% endblock %}

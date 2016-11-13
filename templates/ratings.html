@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<br>
+ <h1> {{ rated_bus }}</h1>
+<br>
+
+
+{% if "user_id" in session %}
+    <h2>Your Rating</h2>
+    {% if user_rating %}
+        <p>You currently rate this a {{ user_rating.rating }}</p>
+    {% endif %}
+      <form action="/ratings" method="POST" id="usrform">
+          <span class="star-rating">
+          <input type="radio" name="rating" value="1"><i></i>
+          <input type="radio" name="rating" value="2"><i></i>
+          <input type="radio" name="rating" value="3"><i></i>
+          <input type="radio" name="rating" value="4"><i></i>
+          <input type="radio" name="rating" value="5"><i></i>
+          </span>
+          <br>
+          <strong class="choice">Choose a rating</strong><br><br>
+          <input type="checkbox" name="filters" value="awc"> The Crowded Bus<br>
+          <input type="checkbox" name="filters" value="awl"> Arrives Every Blue Moon<br>
+          <input type="checkbox" name="filters" value="sdn"> Stops That Throw You From Your Seat<br>
+          <input type="checkbox" name="filters" value="aol"> Agressive Old Ladies<br>
+          <input type="checkbox" name="filters" value="lnp"> Late Night Party Bus<br>
+          <input type="checkbox" name="filters" value="hdr"> Hot Drivers<br>
+          <input type="checkbox" name="filters" value="mdr"> Mean Drivers<br>
+          <input type="checkbox" name="filters" value="tcb"> Best Tour of the City Bus<br>
+          <input type="checkbox" name="filters" value="tbd"> Tidy Bus<br>
+          <input type="checkbox" name="filters" value="cty"> Crusty Bus<br>
+          <input type="checkbox" name="filters" value="pwk"> Packed with Kids<br>
+          <input type="checkbox" name="filters" value="dpt"> Departs as You Get to Stop<br>
+          <input type="checkbox" name="filters" value="wss"> Will Skip Your Stop<br>
+          <input type="checkbox" name="filters" value="mls"> Has Mystery Liquid in Seats<br>
+
+          <br>
+          <br>
+
+          <textarea rows="4" cols="50" name="comments" form="usrform">Enter text here...</textarea>
+          <br>
+          <br>
+          <input type="submit" value="Submit">
+          </form>
+
+{% endif %}
+
+
+
+
+
+{% endblock %}
