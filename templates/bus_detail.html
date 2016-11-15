@@ -19,12 +19,21 @@
 what poeple are saying about the {{ info.bus_name }}<br>
 
 <ul>
-{% for comments in sessioned_bus_comments %}
-    {% for comment in comments %}
-    <li>{{ sessioned_bus_comments }}</li>
-    {% endfor %}
+{% for comment in comments %}
+    <li>{{ comment[0] }}</li>
 {% endfor %}
 </ul>
+
+<br>
+<br>
+<ul>
+{% for filter in filters %}
+    <li>{{ filter[0][0] }}</li>
+{% endfor %}
+</ul>
+
+
+
 
 
 {% endblock %}

@@ -28,37 +28,57 @@ def get_bus_details():
    
 	return bus_detail
 
+def get_stop_ids(bus_stop_id):
 
-def get_stop_info(stops):
+	results = [ item['stop_id'] for item in bus_stop_id ]
+
+
+	return results
+
+	
+def get_stop_info(info):
 	"""Shows info per bus stop"""
 	api_url = 'http://webservices.nextbus.com/service/publicXMLFeed?command=predictions&a=sf-muni&stopId='
-	"""Stop_dict = {bus_name:'38',
-					minutes: 7,
-					stop_location: 'Geary & Leavenworth'}"""
-	for stop in stops:
-		url = api_url + str(stop)
-	return url
-
-
-def send_api(url):
-	response = requests.get(url)
-	unparsed_xml = response.text
-	xml = BeautifulSoup(unparsed_xml, 'xml')
-
 	
-	return xml
+	urls = []
+	for stop_id in info:
+		url = api_url + str(stop_id)
+		urls.append(url)
+	return urls
 
 
-def get_bus_name_info(xml):
 
-	xml_infos = xml.find_all('predictions')
+def send_api(urls):
+	xmls = []
+	for url in urls:
+		response = requests.get(url)
+		unparsed_xml = response.text
+		xml = BeautifulSoup(unparsed_xml, 'xml')
+		xmls.append(xml)
+
+	return xmls
 
 
-	for xml_info in xml_infos:
-		name_info = xml_info['routeTag']
-	
-		
-		return name_info
+
+def get_bus_name_info(xmls):
+
+	stop_dict = {}
+
+	for xml in xmls:
+		xml_infos = xml.find_all('predictions')
+		for xml_info in xml_infos:
+			r_name = xml_info['routeTag']
+
+			stop_dict[r_name] = {}
+			stop_dict[r_name]['name'] = xml_info['routeTag'],
+			stop_dict[r_name]['dir'] = xml.predictions.direction['title'],
+			stop_dict[r_name]['stop'] = xml_info['stopTitle'],
+			stop_dict[r_name]['mins'] = xml.predictions.prediction['minutes']
+
+			r_name = xml_info['routeTag']
+
+	return stop_dict
+
 
 def get_bus_stops(xml):
 
