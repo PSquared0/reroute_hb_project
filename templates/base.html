@@ -4,21 +4,22 @@
 <title>ReRoute</title>
 <script src="https://code.jquery.com/jquery.js"></script>
 <script src="static/main.js"></script>
-<link rel="stylesheet" href="static/styles.css">
+<link rel="stylesheet" type="text/css" href="static/styles.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
+
 <body>
 
-<a class= "home" href="/">Home</a>
-{% if "user_id" not in session %}
-<a class= "register" href="/register">Register</a>
-{% endif %}
-{% if "user_id" in session %}
-    <a class= "login" href="/logout">Logout</a>
-{% else %}
-    <a class= "logout"href="/login">Login</a>
-{% endif %}
-
-
+            <a class="navbar-brand" href="/">Home</a>
+            {% if "user_id" not in session %}
+            <a class= "register" href="/register">Register</a>
+            {% endif %}
+            {% if "user_id" in session %}
+            <a class= "login" href="/logout">Logout</a>
+            {% else %}
+            <a class= "logout"href="/login">Login</a>
+            {% endif %}
+        
 
 {% for flash in get_flashed_messages() %}
   {{ flash }}

@@ -62,23 +62,30 @@ def send_api(urls):
 
 def get_bus_name_info(xmls):
 
+
 	stop_dict = {}
 
 	for xml in xmls:
+	
 		xml_infos = xml.find_all('predictions')
 		for xml_info in xml_infos:
-			r_name = xml_info['routeTag']
+		
+			r_name = xml_info['routeTag'] + '  ' + xml.predictions.direction['title'] 
+			d_name = xml.predictions.direction['title']
+			info = xml_info['routeTag']
 
 			stop_dict[r_name] = {}
-			stop_dict[r_name]['name'] = xml_info['routeTag'],
+	
+
 			stop_dict[r_name]['dir'] = xml.predictions.direction['title'],
+			stop_dict[r_name]['name'] = xml_info['routeTitle'],
+			stop_dict[r_name]['num'] = xml_info['routeTag'],
 			stop_dict[r_name]['stop'] = xml_info['stopTitle'],
 			stop_dict[r_name]['mins'] = xml.predictions.prediction['minutes']
 
-			r_name = xml_info['routeTag']
+		
 
 	return stop_dict
-
 
 def get_bus_stops(xml):
 

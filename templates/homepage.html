@@ -1,8 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<script type="text/javascript"> function loadNewDoc() { window.location="/stop_info"; } 
-</script> 
 
 
   <h1>Reroute</h1>
@@ -34,12 +32,14 @@
 
 <p>Click the button to get your coordinates.</p>
 
-<button onclick="(function(){showlocation(); setTimeout(loadNewDoc(), 5000)})">Try It</button>
+<button onclick="showlocation(); delayredir()">Try It</button>
 
 <p id="demo"></p>
 
 
 <script type="text/javascript">
+var lat = null
+var long = null
 
 function showlocation() {
    // One-shot position request.
@@ -48,14 +48,31 @@ function showlocation() {
 }
 
 function callback(position) {
-   var lat = position.coords.latitude;
-   var long = position.coords.longitude
+   lat = position.coords.latitude;
+   long = position.coords.longitude
    console.log(lat, long);
    $.get('/stop_info',{'lat': lat, 'long': long})
 }
 
-      
+
+
+function redirect() { 
+
+window.location="/stop_info?lat=" + lat + "&long=" + long;
+
+} 
+
+ 
+function delayredir()
+
+{
+ 
+setTimeout('redirect()', 6000);
+
+}
+
 </script>
+
 
 
 

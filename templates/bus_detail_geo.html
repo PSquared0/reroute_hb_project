@@ -1,6 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<p> hello </p>
+<p> Bus Arrivals </p>
+
+{% for key, value in stop_dict.iteritems() %}
+    <li><a href="/bus_detail?bus={{ value.num[0] }}" +>{{ value.name[0] }}</a>
+     {{ value.dir[0] }} {{ value.stop[0] }} {{ value.mins[0] }}
+
+
+    </li>
+{% endfor %}
 
 {% endblock %}

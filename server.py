@@ -16,24 +16,31 @@ app.secret_key = "ABC"
 
 app.jinja_env.undefined = StrictUndefined
 
-
 @app.route('/')
 def index():
+
+    """splash page"""
+
+    
+    return render_template("splash.html")
+
+
+
+@app.route('/home')
+def home():
     """Homepage"""
 
     buses = reroute.get_bus_list()
-    html = render_template("homepage.html",
+ 
+
+    return render_template("homepage.html",
                         buses=buses)
 
-    return html
 
 @app.route('/stop_info', methods=['GET'])
 def stop_info():
     latitude = request.args.get('lat')
     longitude = request.args.get('long')
-    'helo'
-    print latitude
-    print longitude
 
 
     bus_stop_id = [u.__dict__ for u in Stop.query.filter(Stop.stop_lat + .001400 >= latitude, 
@@ -48,20 +55,9 @@ def stop_info():
     urls = reroute.get_stop_info(info)
     xmls = reroute.send_api(urls)
     stop_dict = reroute.get_bus_name_info(xmls)
-   
-
-    # def get_from_dict(stop_dict):
-    #     print 'TESSSSSSSST'
-    #     for bus in stop_dict:
-    #         name = stop_dict.get(r_name, {})
-            
-        
-    #     print name, direct
 
 
-
-
-    return render_template("bus_detail_geo.html", stop_dict=stop_dict)
+    return render_template("bus_detail_geo.html",stop_dict=stop_dict)
         # xml_bus_name=xml_bus_name, xml_stop_name=xml_stop_name,xml_mins=xml_mins)
 
 
@@ -90,7 +86,7 @@ def bus_lists():
     result_score =  [d['rating'] for d in result_dict]
     sessioned_bus_comments =  [d['comments'] for d in result_dict]
 
-    print result_score
+
 
     comments =  db.session.query(Rating.comments).filter_by(bus_code=rated_bus).all()
     fils =  db.session.query(Bus_filter.filter_code).filter_by(bus_code=rated_bus).all()
@@ -99,9 +95,6 @@ def bus_lists():
     for fil in fils:
         n_filter = db.session.query(Filter.filter_name).filter_by(filter_code=fil).all()
         filters.append(n_filter)
-
-    print"XXXXXXX"
-    filters
 
 
     score_count = Rating.query.filter_by(
