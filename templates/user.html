@@ -3,8 +3,12 @@
 
 
 <br>
-<div class="name_info" style="width:97%">
-  <h2>{{ user.fname }} ({{ user.lname }})</h2>
+<div class="name_info">
+  <h2>Hello {{ user.fname|capitalize }} here are your ratings:</h2>
+
+  {% for user_rating in user_ratings %}
+    <li>Bus Line: {{ user_rating.bus_code }} Rating: {{ user_rating.rating }} Comments: {{ user_rating.comments }}</li>
+{% endfor %}
 
 
 

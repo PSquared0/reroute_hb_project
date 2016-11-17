@@ -1,8 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-
-<br>
+<div class="businfo">
 
 <h1> {{ info.bus_name }}</h1>
 <h1> {{ info.bus_lname }}</h1>
@@ -17,6 +16,7 @@
 <br>
 <br>
 
+
 what poeple are saying about the {{ info.bus_name }}<br>
 
 <ul>
@@ -28,13 +28,56 @@ what poeple are saying about the {{ info.bus_name }}<br>
 <br>
 <br>
 <ul>
+
 {% for filter in filters %}
     <li>{{ filter[0][0] }}</li>
 {% endfor %}
 </ul>
+</div>
+<canvas id="chart" width="400" height="400"></canvas>
+<!-- 
+<script type="text/javascript">
+    document.write({{ chart_dict[0]|tojson|safe }});
+</script> -->
 
 
+<script>
+
+var labels = []
+var data = []
+
+var filter_counts = {{ chart_dict[0]|tojson|safe }}
+for (var code in filter_counts) { 
+    labels.push(code)
+    data.push(filter_counts[code])
+}
 
 
+var data = {
+    labels: labels,
+    datasets: [
+        {
+            data: data,
+            backgroundColor: [
+                "#FF6384",
+                "#36A2EB",
+                "#FFCE56"
+            ],
+            hoverBackgroundColor: [
+                "#FF6384",
+                "#36A2EB",
+                "#FFCE56"
+            ]
+        }]
+};
 
+new Chart("chart",{
+    type:"doughnut",
+    data: data,
+    animation:{
+        animateScale:true
+    }
+});
+
+</script>
 {% endblock %}

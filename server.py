@@ -71,6 +71,7 @@ def bus_lists():
     bus_info = Bus.query.get(info)
 
     user_id = session.get("user_id")
+    
 
     bus_dict = {'code': bus_info.bus_code, 
                 'name': bus_info.bus_name,
@@ -105,12 +106,26 @@ def bus_lists():
         average = 'What, no rating? Well, rate this bus already!'
     else:
         average = reroute.get_rating_sum(result_score)/score_count
+
     session['bus_dict'] = bus_dict
+
+
+    chart_dict = {}
+    charts = db.session.query(Bus_filter, Filter).filter_by(bus_code=rated_bus).join(Filter).all()
+
+    for chart in charts:
+        print 'XXXXX'
+        print chart
+        count = chart_dict.get(chart[1].filter_name, 0)
+        chart_dict[chart[1].filter_name] = count +1
+
+
 
 
 
     return render_template("bus_detail.html", info=bus_info, average=average,
-                            sessioned_bus_comments=sessioned_bus_comments,comments=comments, filters=filters)
+                            sessioned_bus_comments=sessioned_bus_comments,
+                            comments=comments, filters=filters, chart_dict=[chart_dict])
 
 
 
@@ -128,8 +143,10 @@ def sign_up():
 
     email = request.form["email"]
     password = request.form["password"]
+    password2 = request.form["password2"]
     fname = request.form["first_name"]
     lname = request.form["last_name"]
+
 
     new_user = User(email=email, password=password, 
                 fname=fname, lname=lname)
@@ -139,7 +156,7 @@ def sign_up():
 
     flash("User %s added." % fname)
 
-    return redirect("/")
+    return redirect("/home")
 
 
 @app.route('/login', methods=['GET'])
@@ -172,7 +189,7 @@ def login_process():
     session["user_id"] = user.user_id
 
     flash("Logged in")
-    return redirect("/")
+    return redirect("/home")
     return render_template("homepage.html")
 
 
@@ -183,7 +200,7 @@ def logout_process():
 
     del session["user_id"]
     flash("Logged Out.")
-    return redirect("/")
+    return redirect("/home")
 
 
 
@@ -248,6 +265,22 @@ def rate_process():
 
     return redirect("/bus_detail" + "?bus=" + rated_bus)
 
+
+@app.route('/user', methods=['GET'])
+def user():
+    """Process login."""
+
+    
+    user_id = session.get("user_id")
+
+    user_ratings = Rating.query.filter_by(user_id=user_id).all()
+    user = User.query.filter_by(user_id=user_id).one()
+
+    print "XXXXXXX"
+    print user_ratings
+    print user
+    
+    return render_template("user.html", user=user, user_ratings=user_ratings)
 
 
 

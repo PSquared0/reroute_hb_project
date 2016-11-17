@@ -1,25 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>ReRoute</title>
-<script src="https://code.jquery.com/jquery.js"></script>
-<script src="static/main.js"></script>
-<link rel="stylesheet" type="text/css" href="static/styles.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title>ReRoute</title>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="static/main.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="static/styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src=https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.js></script>
+
 </head>
 
 <body>
+  <div id=base_buttons>
+  <a class="btn btn-info btn-lg" href="/home" role="button">Home</a>
+  {% if "user_id" not in session %}
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Register</button>
+  {% endif %}
+  {% if "user_id" in session %}
+  <a class="btn btn-info btn-lg" href="/logout" role="button">Log Out</a>
+  <a class="btn btn-info btn-lg" href="/user" role="button" style="float: right;"> FIRST NAME </a>
+  {% else %}
+   <a class= "login" href="/login">Log In</a>
 
-            <a class="navbar-brand" href="/">Home</a>
-            {% if "user_id" not in session %}
-            <a class= "register" href="/register">Register</a>
-            {% endif %}
-            {% if "user_id" in session %}
-            <a class= "login" href="/logout">Logout</a>
-            {% else %}
-            <a class= "logout"href="/login">Login</a>
-            {% endif %}
-        
+  {% endif %}
+  </div>
 
 {% for flash in get_flashed_messages() %}
   {{ flash }}
@@ -29,7 +36,68 @@
   put your content here 
 {% endblock %}
 
+<!-- SIGN UP -->
 
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Register with ReRoute</h4>
+      </div>
+      <div class="container">
+    <div class="col-md-6">
+    <div id="logbox">
+      <form id="signup" action="/register" method="POST">
+        <h1>create an account</h1>
+        <input name="first_name"" type="text" placeholder="What's your first name?" pattern="^[\w]{3,16}$" autofocus="autofocus" required="required" class="input pass"/>
+        <input name="last_name"" type="text" placeholder="What's your last name?" pattern="^[\w]{3,16}$" autofocus="autofocus" required="required" class="input pass"/>
+        <input name="password" type="password" placeholder="Choose a password" required="required" class="input pass"/>
+        <input name="password2" type="password" placeholder="Confirm password" required="required" class="input pass"/>
+        <input type="email" name="email" placeholder="Email address" class="input pass"/>
+        <input type="submit" value="Sign me up!" class="inputButton"/>
+        <div class="text-center">
+            already have an account? <a href="/login" id="login_id">login</a>
+        </div>
+      </form>
+    </div>
+   </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- SIGN UP -->
+
+<!-- LOG IN -->
+
+
+<div id="myModal_Li" class="modal fade" tabindex="-1" role="dialog">
+
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      </div>
+      <div class="container">
+    <div class="col-md-6">
+    <div id="logbox">
+      <form id="signup" action="/register" method="POST">
+        <h1>log in</h1>
+        <input name="password" type="password" placeholder="Choose a password" required="required" class="input pass"/>
+    
+        <input type="submit" value="Sign me up!" class="inputButton"/>
+        <div class="text-center">
+            need an account? <a href="/register" id="login_id">signup</a>
+        </div>
+      </form>
+    </div>
+   </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- LOG IN -->
 
 </body>
 </html>

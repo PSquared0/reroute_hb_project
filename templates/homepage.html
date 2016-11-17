@@ -3,25 +3,23 @@
 
 
 
-  <h1>Reroute</h1>
-
-  <h2>Reroute, pointing you in the right direction</h2>
 
 
+<div id="bus_pick">
   <h3>Pick a Bus Line</h3>
 
     <ul class="dropdown">
     <form action='/bus_detail', method="get">
     <select name="bus">
     {% for bus in buses %}
-    <option value="{{ bus.bus_name }}">{{ bus.bus_name }}
+    <option value="{{ bus.bus_name }}">{{ bus.bus_name }}</option>
     {% endfor %}
     </select>
     <br><br>
     <input type="submit">
     </form>
     </ul>
-
+</div>
 
 
 <form action="#">
@@ -30,13 +28,11 @@
   </div>
 </form>
 
-<p>Click the button to get your coordinates.</p>
+  <p class="copy">Just tell me what buses are close by</p>
 
-<button onclick="showlocation(); delayredir()">Try It</button>
-
-<p id="demo"></p>
-
-
+<div id="geolocation">
+<button onclick="showlocation(); delayredir()">Find Me</button>
+</div>
 <script type="text/javascript">
 var lat = null
 var long = null

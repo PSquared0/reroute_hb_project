@@ -1,14 +1,32 @@
+/*HOMEPAGE*/
 
-
-
-.background {
-    background: url(background.gif) no-repeat center center fixed;
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
-      background-size: cover;
+#base_buttons {
+    padding: 10px 10px 10px 10px;
 }
 
-#reroute {
-    font-family: "Anton"; color: blue
+#bus_pick {
+    padding: 10px 10px 10px 10px;
 }
+
+#geolocation{
+    padding: 10px 10px 1px 45px;
+}
+.copy{
+    padding: 10px 10px 1px 10px;
+}
+/*HOMEPAGE*/
+
+/*BUSDETAIL*/
+
+.businfo{
+  padding: 10px 10px 1px 10px;s
+}
+/*BUSDETAIL*/
+
+
+/*USER PAGE*/
+
+.name_info{
+  padding: 10px 10px 1px 10px;s
+}
+/*USER PAGE*/

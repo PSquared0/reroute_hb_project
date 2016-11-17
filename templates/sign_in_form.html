@@ -15,7 +15,7 @@
     <div class="form-group">
         <label>
             Password
-            <input type="password" name="password" class="form-info">
+            <input type="email" name="email" class="form-info">
         </label>
     </div>
 
@@ -39,4 +39,41 @@
 
 </form>
 </div>
+<button type="button" data-toggle="modal" data-target="#myModal">Launch modal</button>
+
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <p>One fine body&hellip;</p>
+      </div>
+      <div class="container">
+    <div class="col-md-6">
+    <div id="logbox">
+      <form id="signup" action="/register" method="POST">>
+        <h1>create an account</h1>
+        <input name="first_name"" type="text" placeholder="What's your first name?" pattern="^[\w]{3,16}$" autofocus="autofocus" required="required" class="input pass"/>
+        <input name="last_name"" type="text" placeholder="What's your last name?" pattern="^[\w]{3,16}$" autofocus="autofocus" required="required" class="input pass"/>
+        <input name="password" type="password" placeholder="Choose a password" required="required" class="input pass"/>
+        <input name="password2" type="password" placeholder="Confirm password" required="required" class="input pass"/>
+        <input type="email" name="email" placeholder="Email address" class="input pass"/>
+        <input type="submit" value="Sign me up!" class="inputButton"/>
+        <div class="text-center">
+            already have an account? <a href="/login" id="login_id">login</a>
+        </div>
+      </form>
+    </div>
+   </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+  
+    
+
 {% endblock %}
