@@ -125,8 +125,6 @@ def connect_to_db(app):
     db.app = app
     db.init_app(app)
 
-    db.create_all()
-
 
 if __name__ == "__main__":
     # As a convenience, if we run this module interactively, it will leave

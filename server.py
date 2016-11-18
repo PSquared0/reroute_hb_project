@@ -8,7 +8,7 @@ from flask_debugtoolbar import DebugToolbarExtension
 from model import Stop, Bus, Rating, User, Bus_filter, Filter, connect_to_db, db
 from math import acos, cos, radians
 import reroute, requests
-
+from sqlalchemy import func, desc
 
 app = Flask(__name__)
 
@@ -16,25 +16,34 @@ app.secret_key = "ABC"
 
 app.jinja_env.undefined = StrictUndefined
 
+
+
+
 @app.route('/')
-def index():
-
-    """splash page"""
-
-    
-    return render_template("splash.html")
-
-
-
-@app.route('/home')
 def home():
     """Homepage"""
 
-    buses = reroute.get_bus_list()
- 
 
-    return render_template("homepage.html",
-                        buses=buses)
+
+    buses = reroute.get_bus_list()
+    top_rated = db.session.query(Rating.bus_code).group_by(Rating.bus_code).order_by(desc(func.count(Rating.bus_code))).all()
+
+
+
+    user_id = session.get("user_id")
+    if not user_id:
+        return render_template('homepage.html', buses=buses, top_rated=top_rated)
+    else:
+
+        user = User.query.filter_by(user_id=user_id).one()
+
+        print "xxxxx"
+        print top_rated
+
+        return render_template("homepage.html",
+                            buses=buses, user=user, top_rated=top_rated)
+
+
 
 
 @app.route('/stop_info', methods=['GET'])
@@ -56,9 +65,16 @@ def stop_info():
     xmls = reroute.send_api(urls)
     stop_dict = reroute.get_bus_name_info(xmls)
 
+    user_id = session.get("user_id")
 
-    return render_template("bus_detail_geo.html",stop_dict=stop_dict)
-        # xml_bus_name=xml_bus_name, xml_stop_name=xml_stop_name,xml_mins=xml_mins)
+    if not user_id:
+        return render_template("bus_detail_geo.html",stop_dict=stop_dict)
+    else:
+
+        user = User.query.filter_by(user_id=user_id).one()
+
+        return render_template("bus_detail_geo.html",stop_dict=stop_dict, user=user)
+    
 
 
 
@@ -89,7 +105,7 @@ def bus_lists():
 
 
 
-    comments =  db.session.query(Rating.comments).filter_by(bus_code=rated_bus).all()
+    comments =  db.session.query(Rating.comments, User.fname).filter_by(bus_code=rated_bus).all()
     fils =  db.session.query(Bus_filter.filter_code).filter_by(bus_code=rated_bus).all()
     
     filters = []
@@ -114,18 +130,25 @@ def bus_lists():
     charts = db.session.query(Bus_filter, Filter).filter_by(bus_code=rated_bus).join(Filter).all()
 
     for chart in charts:
-        print 'XXXXX'
-        print chart
         count = chart_dict.get(chart[1].filter_name, 0)
         chart_dict[chart[1].filter_name] = count +1
 
 
 
 
+    user_id = session.get("user_id")
 
-    return render_template("bus_detail.html", info=bus_info, average=average,
+    if not user_id:
+        return render_template("bus_detail.html", info=bus_info, average=average,
                             sessioned_bus_comments=sessioned_bus_comments,
                             comments=comments, filters=filters, chart_dict=[chart_dict])
+    else:
+
+        user = User.query.filter_by(user_id=user_id).one()
+
+        return render_template("bus_detail.html", info=bus_info, average=average,
+                            sessioned_bus_comments=sessioned_bus_comments,
+                            comments=comments, filters=filters, chart_dict=[chart_dict], user=user)
 
 
 
@@ -156,7 +179,7 @@ def sign_up():
 
     flash("User %s added." % fname)
 
-    return redirect("/home")
+    return redirect("/")
 
 
 @app.route('/login', methods=['GET'])
@@ -189,7 +212,7 @@ def login_process():
     session["user_id"] = user.user_id
 
     flash("Logged in")
-    return redirect("/home")
+    return redirect("/")
     return render_template("homepage.html")
 
 
@@ -200,7 +223,7 @@ def logout_process():
 
     del session["user_id"]
     flash("Logged Out.")
-    return redirect("/home")
+    return redirect("/")
 
 
 
@@ -220,9 +243,20 @@ def rate():
     else:
         user_rating = None
 
-    return render_template("ratings.html",
+    user = User.query.filter_by(user_id=user_id).one()
+
+    user_id = session.get("user_id")
+
+    if not user_id:
+
+        return render_template("ratings.html",
                            rated_bus=rated_bus,
                            user_rating=user_rating)
+    else:
+
+        return render_template("ratings.html",
+                           rated_bus=rated_bus,
+                           user_rating=user_rating, user=user)
 
 
 
@@ -230,6 +264,7 @@ def rate():
 @app.route('/ratings', methods=['POST'])
 def rate_process():
     """Submit Ratings."""
+
 
     user_id = session.get("user_id")
     bus_dict = session.get('bus_dict')
@@ -258,7 +293,7 @@ def rate_process():
         bus_filter = Bus_filter(filter_code=item, user_id=user_id, bus_code=rated_bus)
         db.session.add(bus_filter)
 
-
+    user = User.query.filter_by(user_id=user_id).one()
 
     db.session.add(comment_info)
     db.session.commit()
@@ -276,9 +311,7 @@ def user():
     user_ratings = Rating.query.filter_by(user_id=user_id).all()
     user = User.query.filter_by(user_id=user_id).one()
 
-    print "XXXXXXX"
-    print user_ratings
-    print user
+
     
     return render_template("user.html", user=user, user_ratings=user_ratings)
 

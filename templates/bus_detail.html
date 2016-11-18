@@ -1,44 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="businfo">
+<div id=comments>
+
 
 <h1> {{ info.bus_name }}</h1>
 <h1> {{ info.bus_lname }}</h1>
 
-<p> This bus is rated at an: </p> <h1> {{ average }}</h1> 
+<p> This bus is rated at an: </p> <h3> {{ average }}</h3> 
 
 {% if "user_id" in session %}
   <a href="/ratings">Rate this Bus</a>
 {% endif %}
 
-<br>
-<br>
-<br>
-
-
-what poeple are saying about the {{ info.bus_name }}<br>
-
-<ul>
-{% for comment in comments %}
-    <li>{{ comment[0] }}</li>
-{% endfor %}
-</ul>
-
-<br>
-<br>
-<ul>
-
-{% for filter in filters %}
-    <li>{{ filter[0][0] }}</li>
-{% endfor %}
-</ul>
 </div>
-<canvas id="chart" width="400" height="400"></canvas>
-<!-- 
-<script type="text/javascript">
-    document.write({{ chart_dict[0]|tojson|safe }});
-</script> -->
+<br>
+<br>
+
+
+<canvas id="chart" width="25" height="25"></canvas>
 
 
 <script>
@@ -59,14 +39,36 @@ var data = {
         {
             data: data,
             backgroundColor: [
-                "#FF6384",
-                "#36A2EB",
-                "#FFCE56"
+                "#E24549",
+                "#FD6E72",
+                "#CA1F23",
+                "#9F0C10",
+                "#FE999C",
+                "#2A8B87",
+                "#08615E",
+                "#137C78",
+                "#449C99",
+                "#75C2BF",
+                "#2A8B87",
+                "#3EB938",
+                "#20A519",
+                "#60CF5A"
             ],
             hoverBackgroundColor: [
-                "#FF6384",
-                "#36A2EB",
-                "#FFCE56"
+                "#E24549",
+                "#FD6E72",
+                "#CA1F23",
+                "#9F0C10",
+                "#FE999C",
+                "#2A8B87",
+                "#08615E",
+                "#137C78",
+                "#449C99",
+                "#75C2BF",
+                "#2A8B87",
+                "#3EB938",
+                "#20A519",
+                "#60CF5A"
             ]
         }]
 };
@@ -75,9 +77,21 @@ new Chart("chart",{
     type:"doughnut",
     data: data,
     animation:{
-        animateScale:true
+        animateRotate:true
     }
+
 });
 
 </script>
+
+
+<div id="comments">
+what poeple are saying about the {{ info.bus_name }}<br>
+
+<ul>
+{% for comment in comments %}
+    <li> <b> {{ comment[1]|capitalize }}</b> says: {{ comment[0] }}</li>
+{% endfor %}
+
+</div>
 {% endblock %}

@@ -2,6 +2,7 @@
 
 #base_buttons {
     padding: 10px 10px 10px 10px;
+    color:#FF6B6B;
 }
 
 #bus_pick {
@@ -14,19 +15,210 @@
 .copy{
     padding: 10px 10px 1px 10px;
 }
+#busimage{
+    height: 250px; 
+    width: 550px; 
+}
+
+.page_title{
+  font-family: 'Pacifico', cursive;
+  font-size:180px;
+  color:#FF6B6B;
+  padding: 10px 50px 50px 200px;
+}
+
+.sec-head{
+  font-family: 'Open Sans Condensed:700', sans-serif;
+  font-size:30px;
+  color:#FF6B6B;
+}
+
+.text-center{
+  padding: 50;
+}
+
+
+
+.cust-quotes {
+  width: 640px;
+  height:100px;
+  position:relative;
+}
+
+.cust-quotes blockquote {
+  position: absolute;
+  top: 50px;
+  bottom: 150px;
+  left: 0px;
+  right: 0px;
+  font-size: 14px;
+  text-align: center;
+  opacity: 0;
+  z-index: 0;
+  transition: opacity 0.5s ease-out 0s, transform 0.5s ease-in 0s;
+}
+
+.cust-quotes blockquote:first-child + blockquote {
+    opacity: 1;
+    z-index: 1;
+    transition: opacity 1.6s ease 0s;
+}
+.cust-quotes blockquote p{
+  font-size:24px;
+  font-weight:normal;
+  font-family: 'Open Sans Condensed', sans-serif;
+  color:#FF6B6B;
+  line-height: 30px;
+  margin-bottom: 10px;
+}
+
+#testimonials {
+  margin:0 auto;
+  width:600px;
+
+}
+
 /*HOMEPAGE*/
 
 /*BUSDETAIL*/
 
 .businfo{
-  padding: 10px 10px 1px 10px;s
+  padding: 10px 10px 1px 10px;
 }
+
+#comments{
+  padding: 10px 10px 1px 10px;
+}
+
 /*BUSDETAIL*/
 
 
 /*USER PAGE*/
 
 .name_info{
-  padding: 10px 10px 1px 10px;s
+  padding: 10px 10px 1px 10px;
 }
 /*USER PAGE*/
+
+
+/*WEATHER*/
+
+
+body {
+  padding: 145px 125px;
+  font: 13px 'Open Sans', "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  background: #FF6B6B;
+}
+
+@font-face {
+    font-family: 'weather';
+    src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.eot');
+    src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.eot?#iefix') format('embedded-opentype'),
+         url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.woff') format('woff'),
+         url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.ttf') format('truetype'),
+         url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.svg#artill_clean_weather_iconsRg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#weather {
+  width: 500px;
+  margin: 0px auto;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+i {
+  color: ##FF6B6B;
+  font-family: weather ;
+  font-size: 50px;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1.0;
+}
+
+.icon-0:before { content: ":"; }
+.icon-1:before { content: "p"; }
+.icon-2:before { content: "S"; }
+.icon-3:before { content: "Q"; }
+.icon-4:before { content: "S"; }
+.icon-5:before { content: "W"; }
+.icon-6:before { content: "W"; }
+.icon-7:before { content: "W"; }
+.icon-8:before { content: "W"; }
+.icon-9:before { content: "I"; }
+.icon-10:before { content: "W"; }
+.icon-11:before { content: "I"; }
+.icon-12:before { content: "I"; }
+.icon-13:before { content: "I"; }
+.icon-14:before { content: "I"; }
+.icon-15:before { content: "W"; }
+.icon-16:before { content: "I"; }
+.icon-17:before { content: "W"; }
+.icon-18:before { content: "U"; }
+.icon-19:before { content: "Z"; }
+.icon-20:before { content: "Z"; }
+.icon-21:before { content: "Z"; }
+.icon-22:before { content: "Z"; }
+.icon-23:before { content: "Z"; }
+.icon-24:before { content: "E"; }
+.icon-25:before { content: "E"; }
+.icon-26:before { content: "3"; }
+.icon-27:before { content: "a"; }
+.icon-28:before { content: "A"; }
+.icon-29:before { content: "a"; }
+.icon-30:before { content: "A"; }
+.icon-31:before { content: "6"; }
+.icon-32:before { content: "1"; }
+.icon-33:before { content: "6"; }
+.icon-34:before { content: "1"; }
+.icon-35:before { content: "W"; }
+.icon-36:before { content: "1"; }
+.icon-37:before { content: "S"; }
+.icon-38:before { content: "S"; }
+.icon-39:before { content: "S"; }
+.icon-40:before { content: "M"; }
+.icon-41:before { content: "W"; }
+.icon-42:before { content: "I"; }
+.icon-43:before { content: "W"; }
+.icon-44:before { content: "a"; }
+.icon-45:before { content: "S"; }
+.icon-46:before { content: "U"; }
+.icon-47:before { content: "S"; }
+
+#weather h2 {
+  margin: 0 0 8px;
+  color: #FF6B6B;
+  font-size: 50px;
+  font-weight: 500;
+  text-align: center;
+  text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+#weather ul {
+  margin: 0;
+  padding: 0;
+}
+
+#weather li {
+  background: #FF6B6B;
+  background: rgba(255,255,255,0.90);
+  padding: 20px;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+#weather .currently {
+  margin: 0 20px;
+}
+
+button {
+  display: block;
+  margin: 15px auto;
+  width: 140px;
+  padding: 5px;
+  background: transparent;
+  color: #FF6B6B;
+  border: 0;
+  border-radius: 5px;
+}

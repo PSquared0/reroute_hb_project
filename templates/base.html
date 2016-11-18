@@ -10,18 +10,20 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src=https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.js></script>
+   <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700|Pacifico" rel="stylesheet">
+   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min.js"></script>
 
 </head>
 
 <body>
   <div id=base_buttons>
-  <a class="btn btn-info btn-lg" href="/home" role="button">Home</a>
+  <a class="btn btn-info btn-lg" href="/" role="button">Home</a>
   {% if "user_id" not in session %}
   <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Register</button>
   {% endif %}
   {% if "user_id" in session %}
   <a class="btn btn-info btn-lg" href="/logout" role="button">Log Out</a>
-  <a class="btn btn-info btn-lg" href="/user" role="button" style="float: right;"> FIRST NAME </a>
+  <a class="btn btn-info btn-lg" href="/user" role="button" style="float: right;"> {{ user.fname|capitalize }} </a>
   {% else %}
    <a class= "login" href="/login">Log In</a>
 
@@ -47,8 +49,9 @@
         <h4 class="modal-title">Register with ReRoute</h4>
       </div>
       <div class="container">
+      <div class="modal-footer">
     <div class="col-md-6">
-    <div id="logbox">
+    <div id="logbox" class="text-center">
       <form id="signup" action="/register" method="POST">
         <h1>create an account</h1>
         <input name="first_name"" type="text" placeholder="What's your first name?" pattern="^[\w]{3,16}$" autofocus="autofocus" required="required" class="input pass"/>
@@ -63,10 +66,11 @@
       </form>
     </div>
    </div>
+   </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-
+</div>
 <!-- SIGN UP -->
 
 <!-- LOG IN -->

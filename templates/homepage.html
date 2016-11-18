@@ -2,9 +2,34 @@
 {% block content %}
 
 
+<a name="Top">
+<div class="row">
+            <section class="col-xs-12 col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-1" id="splash"">
+                <h1 href="#bottom" class=page_title>reRoute</h1><a href="#bottom"></a>
 
+            </section>
+        </div>
 
+      
+<section id="testimonials">
+<div class="cust-quotes">
+  <blockquote data-timeout="1800"><p>The original Spanish name for San Francisco was Yerba Buena, meaning "good herb" or "good grass"</p></blockquote>
+  <blockquote data-timeout="3800"><p>In Star Trek, Star Fleet HQ is located just north of San Francisco.</p></blockquote>
+  <blockquote data-timeout="5800"><p>The gutters in Buena Vista Park are made from old tombstones from Lone Mountain Cemetery.</p></blockquote>
+  <blockquote data-timeout="9800"><p>San Francisco is built on 43 hills.</p></blockquote>
+</div>
+  </section>
+      
 
+  <div id="weather"></div>
+<button class="js-geolocation" style="display: none;">Use Your Location</button>
+
+<h2> Top Rated buses </h2>
+  {% for tops in top_rated %}
+    <ul>
+    <li>{{ tops[0] }}</li>
+    </ul>
+  {% endfor %}
 <div id="bus_pick">
   <h3>Pick a Bus Line</h3>
 
@@ -20,6 +45,10 @@
     </form>
     </ul>
 </div>
+
+<center>
+<a name="bottom">
+</center>
 
 
 <form action="#">
