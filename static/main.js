@@ -1,8 +1,4 @@
-$('#myModal').on('shown.bs.modal', function () {
-  $('#myInput').focus()
-})
 
-// model for sign up //
 
 // Quotes //
 
@@ -75,3 +71,5 @@ function loadWeather(location, woeid) {
     }
   });
 }
+
+

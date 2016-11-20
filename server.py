@@ -51,7 +51,6 @@ def stop_info():
     latitude = request.args.get('lat')
     longitude = request.args.get('long')
 
-
     bus_stop_id = [u.__dict__ for u in Stop.query.filter(Stop.stop_lat + .001400 >= latitude, 
                                     Stop.stop_lat - .001400 <= latitude, 
                                     Stop.stop_lon + .001400 >= longitude ,
@@ -63,7 +62,15 @@ def stop_info():
     info = reroute.get_stop_ids(bus_stop_id)
     urls = reroute.get_stop_info(info)
     xmls = reroute.send_api(urls)
+
+    
     stop_dict = reroute.get_bus_name_info(xmls)
+
+    if reroute.get_bus_name_info(xmls) is None:
+        stop_dict = "Looks like muni doesn't run in your area, move to SF if you can afford it"
+    else: 
+        stop_dict = reroute.get_bus_name_info(xmls)
+
 
     user_id = session.get("user_id")
 
@@ -73,7 +80,7 @@ def stop_info():
 
         user = User.query.filter_by(user_id=user_id).one()
 
-        return render_template("bus_detail_geo.html",stop_dict=stop_dict, user=user)
+        return render_template("bus_detail_geo.html",stop_dict=stop_dict, user=user,latitude=latitude, longitude=longitude )
     
 
 

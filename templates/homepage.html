@@ -6,12 +6,14 @@
 <div class="row">
             <section class="col-xs-12 col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-1" id="splash"">
                 <h1 href="#bottom" class=page_title>reRoute</h1><a href="#bottom"></a>
+                <img src="static/images/Bus_logo.svg">
+
+                 
 
             </section>
         </div>
 
-      
-<section id="testimonials">
+<section class="col-xs-12 col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-3" id="testimonials">
 <div class="cust-quotes">
   <blockquote data-timeout="1800"><p>The original Spanish name for San Francisco was Yerba Buena, meaning "good herb" or "good grass"</p></blockquote>
   <blockquote data-timeout="3800"><p>In Star Trek, Star Fleet HQ is located just north of San Francisco.</p></blockquote>
@@ -27,9 +29,11 @@
 <h2> Top Rated buses </h2>
   {% for tops in top_rated %}
     <ul>
-    <li>{{ tops[0] }}</li>
+    <a href="/bus_detail?bus={{ tops[0] }}"> {{ tops[0] }}</a>
     </ul>
   {% endfor %}
+
+  
 <div id="bus_pick">
   <h3>Pick a Bus Line</h3>
 
@@ -46,9 +50,6 @@
     </ul>
 </div>
 
-<center>
-<a name="bottom">
-</center>
 
 
 <form action="#">
@@ -57,11 +58,15 @@
   </div>
 </form>
 
+
   <p class="copy">Just tell me what buses are close by</p>
 
 <div id="geolocation">
-<button onclick="showlocation(); delayredir()">Find Me</button>
+<button onclick="showlocation()">Find Me</button>
 </div>
+
+
+
 <script type="text/javascript">
 var lat = null
 var long = null
@@ -69,34 +74,53 @@ var long = null
 function showlocation() {
    // One-shot position request.
    console.log('clicked');
-   navigator.geolocation.getCurrentPosition(callback);
+   navigator.geolocation.getCurrentPosition(handlelocation);
 }
 
-function callback(position) {
+function handlelocation(position) {
    lat = position.coords.latitude;
    long = position.coords.longitude
    console.log(lat, long);
-   $.get('/stop_info',{'lat': lat, 'long': long})
+   $("#result").load('/stop_info?lat=' + lat + '&long=' + long)
+}
+
+console.log("hello")
+ $('#geolocation').on('click', function (evt) {
+   
+});
+
+function getbusinfo(){
+    console.log('Hi i am an alert')
+  
+  var lat = 37.7749
+    var long = -122.4194
+    $("#result").load('/stop_info?lat=' + lat + '&long=' + long)
+
 }
 
 
+// function redirect() { 
 
-function redirect() { 
+// window.location="/stop_info?lat=" + lat + "&long=" + long;
 
-window.location="/stop_info?lat=" + lat + "&long=" + long;
-
-} 
+// } 
 
  
 function delayredir()
 
 {
  
-setTimeout('redirect()', 6000);
+setTimeout(6000);
 
 }
 
 </script>
+
+<center>
+<a name="bottom">
+</center>
+
+<span id=result></span>
 
 
 
@@ -104,6 +128,8 @@ setTimeout('redirect()', 6000);
 
 
 <!-- ################################################################################ -->
+
+
 
   
 
