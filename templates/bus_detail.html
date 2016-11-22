@@ -18,7 +18,10 @@
 <br>
 
 
-<canvas id="chart" width="25" height="25"></canvas>
+<center></center><div class=chartborder>
+<canvas id="chart" width="50" height="50"></canvas>
+</div>
+</center>
 
 
 <script>
@@ -75,6 +78,8 @@ var data = {
 
 new Chart("chart",{
     type:"doughnut",
+    maintainAspectRatio: true,
+    responsive: true,
     data: data,
     animation:{
         animateRotate:true
@@ -90,8 +95,14 @@ what poeple are saying about the {{ info.bus_name }}<br>
 
 <ul>
 {% for comment in comments %}
-    <li> <b> {{ comment[1]|capitalize }}</b> says: {{ comment[0] }}</li>
+<b> {{ comment[1]|capitalize }}</b>
+</div>
+<div class="talk-bubble tri-right left-top">
+  <div class="talktext">
+    <li> {{ comment[0] }}</li>
 {% endfor %}
+ </div>
+</div>
 
 </div>
 {% endblock %}

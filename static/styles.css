@@ -133,6 +133,12 @@
   padding: 10px 10px 1px 10px;
 }
 
+.chartborder {
+    padding: 2px 2px 2px 2px;
+    width: 600px;
+    height: 600px;
+    margin: auto;
+}
 /*BUSDETAIL*/
 
 
@@ -291,4 +297,53 @@ body {
               width:0;
           }
       }
+
+
+      /*TALK BUBBLES###################################
+
+      /* CSS talk bubble */
+.talk-bubble {
+  margin: 40px;
+  display: inline-block;
+  position: relative;
+  width: 200px;
+  height: auto;
+  background-color: #FF6B6B;
+}
+.border{
+  border: 8px solid #666;
+}
+.round{
+  border-radius: 30px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+
+}
+
+/* Right triangle placed top left flush. */
+.tri-right.border.left-top:before {
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: -40px;
+  right: auto;
+  top: -8px;
+  bottom: auto;
+  border: 32px solid;
+  border-color: #666 transparent transparent transparent;
+}
+.tri-right.left-top:after{
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: -20px;
+  right: auto;
+  top: 0px;
+  bottom: auto;
+  border: 22px solid;
+  border-color: #FF6B6B;
+}
+
 
