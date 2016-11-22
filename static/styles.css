@@ -1,9 +1,33 @@
-
-
-#base_buttons {
+.logo{
     padding: 10px 10px 10px 10px;
-    color:#FF6B6B;
 }
+
+.button{
+    background-color: #FF6B6B;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-family: 'Ostrich';
+}
+
+
+@font-face {
+    font-family: 'Ostrich';
+    src: url('static/fonts/webfonts/ostrich-sans-black.woff') format('woff2'),
+          url('static/fonts/webfonts/ostrich-sans-black.ttf') format('truetype'),
+          url('static/fonts/webfonts/ostrich-sans-bold.woff') format('woff2'),
+          url('static/fonts/webfonts/ostrich-sans-bold.ttf') format('truetype'),;
+          font-weight: normal;
+          font-style: normal;
+} 
+
 
 #buspick {
     padding: 10px 10px 10px 10px;
@@ -12,8 +36,13 @@
 #geolocation{
     padding: 10px 10px 1px 45px;
 }
+
+.homepage-info{
+    padding: 0px 50px 0px 0px;
+}
+
 .copy{
-    padding: 10px 10px 1px 10px;
+    padding: 10px 20px 1px 10px;
 }
 #busimage{
     height: 250px; 
@@ -24,10 +53,16 @@
   font-family: 'Pacifico', cursive;
   font-size:180px;
   color:#FF6B6B;
-  padding: 10px 50px 50px 200px;
+  padding: 10px 0px 50px 0px;
 }
 
 .sec-head{
+  font-family: 'Open Sans Condensed:700', sans-serif;
+  font-size:30px;
+  color:#FF6B6B;
+}
+
+#numbers{
   font-family: 'Open Sans Condensed:700', sans-serif;
   font-size:30px;
   color:#FF6B6B;
@@ -37,12 +72,19 @@
   padding: 50;
 }
 
+#pageheader{
+  font-family: 'Pacifico', cursive;
+  font-size:40px;
+  color:#FF6B6B;
+}
+
 
 
 .cust-quotes {
   width: 640px;
   height:100px;
   position:relative;
+
 }
 
 .cust-quotes blockquote {
@@ -75,6 +117,7 @@
 #testimonials {
   margin:0 auto;
   width:600px;
+  padding: 25px 5px 45px 5px;
 
 }
 
@@ -102,14 +145,6 @@
 
 
 /*WEATHER*/
-
-
-body {
-  padding: 145px 125px;
-  font: 13px 'Open Sans', "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  background: #FF6B6B;
-}
-
 @font-face {
     font-family: 'weather';
     src: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/93/artill_clean_icons-webfont.eot');
@@ -121,20 +156,31 @@ body {
     font-style: normal;
 }
 
+body {
+  padding: 150px 0;
+  font: 13px 'Open Sans Condensed', sans-serif;
+}
+
 #weather {
   width: 500px;
   margin: 0px auto;
   text-align: center;
   text-transform: uppercase;
+  padding: 45px 0px 0px 5px;
 }
 
 i {
-  color: ##FF6B6B;
-  font-family: weather ;
+  color: #FF6B6B;
+  font-family: weather;
   font-size: 50px;
   font-weight: normal;
   font-style: normal;
   line-height: 1.0;
+  text-transform: none;
+  padding-top: 50px;
+  padding-right: 30px;
+  padding-bottom: 0px;
+  padding-left: 0px;
 }
 
 .icon-0:before { content: ":"; }
@@ -190,9 +236,8 @@ i {
   margin: 0 0 8px;
   color: #FF6B6B;
   font-size: 50px;
-  font-weight: 500;
+  font-weight: 300;
   text-align: center;
-  text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15);
 }
 
 #weather ul {
@@ -203,24 +248,13 @@ i {
 #weather li {
   background: #FF6B6B;
   background: rgba(255,255,255,0.90);
-  padding: 20px;
+  padding: 10px;
   display: inline-block;
   border-radius: 5px;
 }
 
 #weather .currently {
-  margin: 0 20px;
-}
-
-button {
-  display: block;
-  margin: 15px auto;
-  width: 140px;
-  padding: 5px;
-  background: transparent;
-  color: #FF6B6B;
-  border: 0;
-  border-radius: 5px;
+  margin: 30px 20px;
 }
 
 /*/*//*BASE *########################################*/

@@ -2,40 +2,45 @@
 {% block content %}
 
 
-<a name="Top">
-<div class="row">
-            <section class="col-xs-12 col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-1" id="splash"">
-                <h1 href="#bottom" class=page_title>reRoute</h1><a href="#bottom"></a>
-                <img src="static/images/Bus_logo.svg">
 
-                 
+<center>
+  <div class="row">
+  <h1 class=page_title>reRoute</h1>
+  <div class=logo> <img src="static/images/Bus_logo.svg" height="450" width="450"></div>
+  </div>
+</center>
 
-            </section>
-        </div>
 
-<section class="col-xs-12 col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-3" id="testimonials">
+<center>
 <div class="cust-quotes">
-  <blockquote data-timeout="1800"><p>The original Spanish name for San Francisco was Yerba Buena, meaning "good herb" or "good grass"</p></blockquote>
-  <blockquote data-timeout="3800"><p>In Star Trek, Star Fleet HQ is located just north of San Francisco.</p></blockquote>
-  <blockquote data-timeout="5800"><p>The gutters in Buena Vista Park are made from old tombstones from Lone Mountain Cemetery.</p></blockquote>
-  <blockquote data-timeout="9800"><p>San Francisco is built on 43 hills.</p></blockquote>
+  <blockquote data-timeout="4000"><p>The original Spanish name for San Francisco was Yerba Buena, meaning "good herb" or "good grass"</p></blockquote>
+  <blockquote data-timeout="4000"><p>In Star Trek, Star Fleet HQ is located just north of San Francisco.</p></blockquote>
+  <blockquote data-timeout="4000"><p>The gutters in Buena Vista Park are made from old tombstones from Lone Mountain Cemetery.</p></blockquote>
+  <blockquote data-timeout="4000"><p>San Francisco is built on 43 hills.</p></blockquote>
+  <blockquote data-timeout="4000"><p>The Golden Gate Bridge Isn’t Red.
+The official paint color is “International Orange.”</p></blockquote>
+<blockquote data-timeout="4000"><p>San Francisco Official Instrument Is the Accordion.</p></blockquote>
+<blockquote data-timeout="4000"><p>The Model for the Bear on the State Flag Lived in Golden Gate Park.</p></blockquote>
+<blockquote data-timeout="4000"><p>BART used to be fun – the Powell Street Station was transformed into an arcade on December 1st, 1976.</p></blockquote>
 </div>
-  </section>
-      
+</center>
 
-  <div id="weather"></div>
+
+<center> <div id="weather"></center>
+
 <button class="js-geolocation" style="display: none;">Use Your Location</button>
 
-<h2> Top Rated buses </h2>
+<div class="copy">
+<p id="pageheader">top rated</p><br>
   {% for tops in top_rated %}
-    <ul>
+    <ul id=numbers>
     <a href="/bus_detail?bus={{ tops[0] }}"> {{ tops[0] }}</a>
     </ul>
   {% endfor %}
 
   
 <div id="bus_pick">
-  <h3>Pick a Bus Line</h3>
+  <h3 id="pageheader">pick a bus line</h3>
 
     <ul class="dropdown">
     <form action='/bus_detail', method="get">
@@ -51,7 +56,6 @@
 </div>
 
 
-
 <form action="#">
   <div>
     <input type="hidden" name="datatosendback" id="datatosendback">
@@ -59,10 +63,11 @@
 </form>
 
 
-  <p class="copy">Just tell me what buses are close by</p>
+  <p id="pageheader">Just tell me what buses are close by</p>
 
 <div id="geolocation">
 <button onclick="showlocation()">Find Me</button>
+</div>
 </div>
 
 
@@ -98,26 +103,10 @@ function getbusinfo(){
 
 }
 
-
-// function redirect() { 
-
-// window.location="/stop_info?lat=" + lat + "&long=" + long;
-
-// } 
-
- 
-function delayredir()
-
-{
- 
-setTimeout(6000);
-
-}
-
 </script>
 
 <center>
-<a name="bottom">
+
 </center>
 
 <span id=result></span>

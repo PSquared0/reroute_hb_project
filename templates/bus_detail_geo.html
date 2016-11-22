@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<p> Bus Arrivals for Lat {{ latitude }} {{ longitude  }} </p>
+<p> Bus Arrivals</p>
 
 {% for key, value in stop_dict.iteritems() %}
     <li><a href="/bus_detail?bus={{ value.num[0] }}" +>{{ value.name[0] }}</a>

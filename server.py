@@ -27,6 +27,7 @@ def home():
 
     buses = reroute.get_bus_list()
     top_rated = db.session.query(Rating.bus_code).group_by(Rating.bus_code).order_by(desc(func.count(Rating.bus_code))).all()
+    
 
 
 
