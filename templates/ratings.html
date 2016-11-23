@@ -2,24 +2,33 @@
 {% block content %}
 
 
+
+
 <br>
  <h1> {{ rated_bus }}</h1>
 <br>
 
 
+
 {% if "user_id" in session %}
     <h2>Your Rating</h2>
     {% if user_rating %}
-        <p>You currently rate this a {{ score }}</p>
+        <p>You currently rate this : {{ score }}</p>
     {% endif %}
-      <form action="/ratings" method="POST" id="usrform">
-          <span class="star-rating">
-          <input type="radio" name="rating" value="1"><i></i>
-          <input type="radio" name="rating" value="2"><i></i>
-          <input type="radio" name="rating" value="3"><i></i>
-          <input type="radio" name="rating" value="4"><i></i>
-          <input type="radio" name="rating" value="5"><i></i>
-          </span>
+      <form action="/ratings" method="POST" id="usrform"  name="star">
+  
+    <fieldset class="rating">
+    <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
+    <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
+    <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
+    <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
+    <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+</fieldset>
+  
+
+
+          <br>
+          <br>
           <br>
           <strong class="choice">Choose a rating</strong><br><br>
           <input type="checkbox" name="filters" value="awc"> The Crowded Bus<br>
@@ -40,7 +49,7 @@
           <br>
           <br>
 
-          <textarea rows="4" cols="50" name="comments" form="usrform">Please Enter text here...</textarea>
+          <textarea placeholder= "Add your acclamations or condemnations here" rows="4" cols="50" name="comments" form="usrform"></textarea> max 140 characters
           <br>
           <br>
           <input type="submit" value="Submit">

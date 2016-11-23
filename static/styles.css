@@ -1,9 +1,6 @@
-.logo{
-    padding: 10px 10px 10px 10px;
-}
 
 .button{
-    background-color: #FF6B6B;
+    background-color: #E24549;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -14,16 +11,44 @@
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 4px;
-    font-family: 'Ostrich';
+    font-family: Ostrich, bold;
+}
+
+.navbar{
+  background-color: #E24549;
+  border: none;
+}
+.navbar-inverse{
+  background-color: #E24549;
+  border: none;
+}
+
+.navbar-fixed-top{
+background-color: #E24549;
+
+}
+
+.navbar-toggle{
+background-color: #E24549;
+border: white;
+}
+.navbar-toggle:focus{
+background-color: #E24549;
+border: white;
+}
+
+.navbar{
+  background-color: #E24549;
+  border: white
 }
 
 
 @font-face {
     font-family: 'Ostrich';
-    src: url('static/fonts/webfonts/ostrich-sans-black.woff') format('woff2'),
-          url('static/fonts/webfonts/ostrich-sans-black.ttf') format('truetype'),
-          url('static/fonts/webfonts/ostrich-sans-bold.woff') format('woff2'),
-          url('static/fonts/webfonts/ostrich-sans-bold.ttf') format('truetype'),;
+    src: url('/static/fonts/webfonts/ostrich-sans-black.woff') format('woff'),
+          url('/static/fonts/webfonts/ostrich-sans-black.ttf') format('truetype'),
+          url('/static/fonts/webfonts/ostrich-sans-bold.woff') format('woff'),
+          url('/static/fonts/webfonts/ostrich-sans-bold.ttf') format('truetype');
           font-weight: normal;
           font-style: normal;
 } 
@@ -50,7 +75,7 @@
 }
 
 .page_title{
-  font-family: 'Pacifico', cursive;
+  font-family: Ostrich, bold;
   font-size:180px;
   color:#FF6B6B;
   padding: 10px 0px 50px 0px;
@@ -73,7 +98,7 @@
 }
 
 #pageheader{
-  font-family: 'Pacifico', cursive;
+  font-family: Ostrich, bold;
   font-size:40px;
   color:#FF6B6B;
 }
@@ -138,6 +163,15 @@
     width: 600px;
     height: 600px;
     margin: auto;
+}
+
+.comment-name{
+  font-size:24px;
+  font-weight:normal;
+  font-family: 'Open Sans Condensed', sans-serif;
+  color:#FF6B6B;
+
+
 }
 /*BUSDETAIL*/
 
@@ -302,6 +336,11 @@ body {
       /*TALK BUBBLES###################################
 
       /* CSS talk bubble */
+..container {
+  padding: 5% 5%;
+}
+
+/* CSS talk bubble */
 .talk-bubble {
   margin: 40px;
   display: inline-block;
@@ -311,7 +350,7 @@ body {
   background-color: #FF6B6B;
 }
 .border{
-  border: 8px solid #666;
+  border: 8px solid #FE999C;
 }
 .round{
   border-radius: 30px;
@@ -343,7 +382,259 @@ body {
   top: 0px;
   bottom: auto;
   border: 22px solid;
-  border-color: #FF6B6B;
+  border-color: lightyellow transparent transparent transparent;
+}
+
+/* Right triangle, left side slightly down */
+.tri-right.border.left-in:before {
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: -40px;
+  right: auto;
+  top: 30px;
+  bottom: auto;
+  border: 20px solid;
+  border-color: #FF6B6B #FF6B6B transparent transparent;
+}
+.tri-right.left-in:after{
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: -20px;
+  right: auto;
+  top: 38px;
+  bottom: auto;
+  border: 12px solid;
+  border-color: #FE999C transparent transparent;
+}
+
+/*Right triangle, placed bottom left side slightly in*/
+.tri-right.border.btm-left:before {
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: -8px;
+  right: auto;
+  top: auto;
+  bottom: -40px;
+  border: 32px solid;
+  border-color: transparent transparent transparent #FF6B6B;
+}
+.tri-right.btm-left:after{
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 0px;
+  right: auto;
+  top: auto;
+  bottom: -20px;
+  border: 22px solid;
+  border-color: transparent transparent transparent lightyellow;
+}
+
+/*Right triangle, placed bottom left side slightly in*/
+.tri-right.border.btm-left-in:before {
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 30px;
+  right: auto;
+  top: auto;
+  bottom: -40px;
+  border: 20px solid;
+  border-color: #FE999C transparent transparent #FE999C;
+}
+.tri-right.btm-left-in:after{
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 38px;
+  right: auto;
+  top: auto;
+  bottom: -20px;
+  border: 12px solid;
+  border-color: #FF6B6B transparent transparent #FF6B6B;
+}
+
+/*Right triangle, placed bottom right side slightly in*/
+.tri-right.border.btm-right-in:before {
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: auto;
+  right: 30px;
+  bottom: -40px;
+  border: 20px solid;
+  border-color: #FE999C #FE999C transparent transparent;
+}
+.tri-right.btm-right-in:after{
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: auto;
+  right: 38px;
+  bottom: -20px;
+  border: 12px solid;
+  border-color: #FF6B6B #FF6B6B transparent transparent;
+}
+
+.tri-right.border.btm-right:before {
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: auto;
+  right: -8px;
+  bottom: -40px;
+  border: 20px solid;
+  border-color: #FE999C #FE999C transparent transparent;
+}
+.tri-right.btm-right:after{
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: auto;
+  right: 0px;
+  bottom: -20px;
+  border: 12px solid;
+  border-color: lightyellow lightyellow transparent transparent;
+}
+
+/* Right triangle, right side slightly down*/
+.tri-right.border.right-in:before {
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: auto;
+  right: -40px;
+  top: 30px;
+  bottom: auto;
+  border: 20px solid;
+  border-color: #FE999C transparent transparent #666;
+}
+.tri-right.right-in:after{
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: auto;
+  right: -20px;
+  top: 38px;
+  bottom: auto;
+  border: 12px solid;
+  border-color: lightyellow transparent transparent lightyellow;
+}
+
+/* Right triangle placed top right flush. */
+.tri-right.border.right-top:before {
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: auto;
+  right: -40px;
+  top: -8px;
+  bottom: auto;
+  border: 32px solid;
+  border-color: #666 transparent transparent transparent;
+}
+.tri-right.right-top:after{
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: auto;
+  right: -20px;
+  top: 0px;
+  bottom: auto;
+  border: 20px solid;
+  border-color: lightyellow transparent transparent transparent;
 }
 
 
+.talktext{
+  padding: 1em;
+  text-align: center;
+  line-height: 1.5em;
+  list-style: none;
+  font-size: 20px;
+  color: white;
+}
+.talktext p{
+  /* remove webkit p margins */
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
+}
+
+
+/*RATINGS################################*/
+
+
+.rating {
+    float:left;
+}
+
+/* :not(:checked) is a filter, so that browsers that don’t support :checked don’t 
+   follow these rules. Every browser that supports :checked also supports :not(), so
+   it doesn’t make the test unnecessarily selective */
+.rating:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+    clip:rect(0,0,0,0);
+}
+
+.rating:not(:checked) > label {
+    float:right;
+    width:1em;
+    padding:1 .1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:350%;
+    line-height:1.2;
+    color:#ddd;
+  
+}
+
+.rating:not(:checked) > label:before {
+    content: '★ ';
+}
+
+.rating > input:checked ~ label {
+    color: #f70;
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+    color: gold;
+  
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+    color: #ea0;
+    text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating > label:active {
+    position:relative;
+    top:2px;
+    left:2px;
+}
+/*STAR RATING#############################*/
+
+  

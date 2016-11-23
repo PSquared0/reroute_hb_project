@@ -69,6 +69,6 @@ $('#myModal').on('shown.bs.modal', function () {
 
 // model for sign up //
 
-
+// LOADING################################
 
 

@@ -113,9 +113,10 @@ def bus_lists():
 
 
 
-    comments =  db.session.query(Rating.comments, User.fname).filter_by(bus_code=rated_bus).all()
+    comments =  db.session.query(Rating.comments, User.fname).filter_by(bus_code=rated_bus).join(User).all()
     fils =  db.session.query(Bus_filter.filter_code).filter_by(bus_code=rated_bus).all()
-    
+
+      
     filters = []
     for fil in fils:
         n_filter = db.session.query(Filter.filter_name).filter_by(filter_code=fil).all()
@@ -142,7 +143,10 @@ def bus_lists():
         chart_dict[chart[1].filter_name] = count +1
 
 
-
+    print 'xxxxxxcomments'
+    print average 
+    print score_count
+    print result_score
 
     user_id = session.get("user_id")
 
@@ -255,6 +259,9 @@ def rate():
 
     user_id = session.get("user_id")
 
+    score = session.get("score")
+
+
     if not user_id:
 
         return render_template("ratings.html",
@@ -264,7 +271,7 @@ def rate():
 
         return render_template("ratings.html",
                            rated_bus=rated_bus,
-                           user_rating=user_rating, user=user)
+                           user_rating=user_rating, user=user, score=score)
 
 
 
@@ -281,12 +288,6 @@ def rate_process():
     rated_bus = bus_dict.get('name')
 
 
-    if user_id:
-        user_rating = Rating.query.filter_by(
-            bus_code=rated_bus, user_id=user_id).first()
-
-    else:
-        user_rating = None
 
     filters = request.form.getlist("filters")
 
@@ -302,6 +303,18 @@ def rate_process():
         db.session.add(bus_filter)
 
     user = User.query.filter_by(user_id=user_id).one()
+
+
+    if score:
+        score != None
+        flash("Rating updated.")
+
+    else:
+        rating = comment_info
+        flash("Rating added.")
+
+
+    session["score"] = score
 
     db.session.add(comment_info)
     db.session.commit()

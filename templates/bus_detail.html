@@ -43,8 +43,8 @@ var data = {
             data: data,
             backgroundColor: [
                 "#E24549",
-                "#FD6E72",
-                "#CA1F23",
+                "#75C2BF",
+                "#3EB938",
                 "#9F0C10",
                 "#FE999C",
                 "#2A8B87",
@@ -53,23 +53,23 @@ var data = {
                 "#449C99",
                 "#75C2BF",
                 "#2A8B87",
-                "#3EB938",
+                "#CA1F23",
                 "#20A519",
                 "#60CF5A"
             ],
             hoverBackgroundColor: [
                 "#E24549",
-                "#FD6E72",
-                "#CA1F23",
+                "#75C2BF",
+                "#3EB938",
                 "#9F0C10",
                 "#FE999C",
                 "#2A8B87",
                 "#08615E",
                 "#137C78",
                 "#449C99",
-                "#75C2BF",
+                "#FD6E72",
                 "#2A8B87",
-                "#3EB938",
+                "#CA1F23",
                 "#20A519",
                 "#60CF5A"
             ]
@@ -89,20 +89,19 @@ new Chart("chart",{
 
 </script>
 
-
-<div id="comments">
-what poeple are saying about the {{ info.bus_name }}<br>
-
+what folks are saying about the {{ info.bus_name }}<br>
+<div class="container">
 <ul>
+
 {% for comment in comments %}
-<b> {{ comment[1]|capitalize }}</b>
-</div>
-<div class="talk-bubble tri-right left-top">
+  <div class="talk-bubble tri-right  border round btm-left-in">
   <div class="talktext">
     <li> {{ comment[0] }}</li>
+    </div>
+    </div>
+    <div ><b class=comment-name> {{ comment[1]|capitalize }}</b>
+    </div>
 {% endfor %}
+</ul>
  </div>
-</div>
-
-</div>
 {% endblock %}
