@@ -9,9 +9,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src=https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.js></script>
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700|Pacifico" rel="stylesheet">
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min.js"></script>
-
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 
 
 
@@ -34,7 +33,7 @@
           <a class="button" href="/logout" role="button">Log Out</a>
           <a class="button" href="/user" role="button"> {{ user.fname|capitalize }} </a>
           {% else %}
-          <a class="button" href="/login">Log In</a>
+          <button type="button" class="button"  data-toggle="modal" data-target="#myModal1">Log In</a>
           
 
           {% endif %}
@@ -92,7 +91,7 @@
 <!-- LOG IN -->
 
 
-<div id="myModal_Li" class="modal fade" tabindex="-1" role="dialog">
+<div id="myModal1" class="modal fade" tabindex="-1" role="dialog">
 
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -102,13 +101,14 @@
       <div class="container">
     <div class="col-md-6">
     <div id="logbox">
-      <form id="signup" action="/register" method="POST">
+      <form id="login" action="/login" method="POST">
         <h1>log in</h1>
-        <input name="password" type="password" placeholder="Choose a password" required="required" class="input pass"/>
+        <input name="email" type="email" placeholder="Enter your email" required="required" class="input pass"/>
+        <input name="password" type="password" placeholder="enter your password" required="required" class="input pass"/>
     
-        <input type="submit" value="Sign me up!" class="inputButton"/>
+        <input type="submit" value="Log in!" class="inputButton"/>
         <div class="text-center">
-            need an account? <a href="/register" id="login_id">signup</a>
+            need an account? <a href="/rloh" id="login_id">signup</a>
         </div>
       </form>
     </div>

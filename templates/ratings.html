@@ -2,13 +2,14 @@
 {% block content %}
 
 
+  <div class="talk-bubble1 tri-right1  border1 round btm-left-in1">
+  <div class="talktext1">
+     <h1> {{ rated_bus }}</h1>
+    </div>
+    </div>
 
 
-<br>
- <h1> {{ rated_bus }}</h1>
-<br>
-
-
+<div class="margins">
 
 {% if "user_id" in session %}
     <h2>Your Rating</h2>
@@ -27,6 +28,7 @@
   
 
 
+          <br>
           <br>
           <br>
           <br>
@@ -54,6 +56,7 @@
           <br>
           <input type="submit" value="Submit">
           </form>
+ </div>
 
 {% endif %}
 

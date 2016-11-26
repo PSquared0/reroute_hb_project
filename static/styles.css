@@ -11,7 +11,12 @@
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 4px;
-    font-family: Ostrich, bold;
+    font-family: 'intro_regular';
+}
+
+
+.margins{
+    padding: 10px 10px 10px 30px;
 }
 
 .navbar{
@@ -42,16 +47,26 @@ border: white;
   border: white
 }
 
+@font-face {
+    font-family: 'intro_regular';
+    src: url('/static/fonts/intro-webfont.woff2') format('woff2'),
+         url('/static/fonts/intro-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
 
 @font-face {
-    font-family: 'Ostrich';
-    src: url('/static/fonts/webfonts/ostrich-sans-black.woff') format('woff'),
-          url('/static/fonts/webfonts/ostrich-sans-black.ttf') format('truetype'),
-          url('/static/fonts/webfonts/ostrich-sans-bold.woff') format('woff'),
-          url('/static/fonts/webfonts/ostrich-sans-bold.ttf') format('truetype');
-          font-weight: normal;
-          font-style: normal;
-} 
+    font-family: 'intro_inlineregular';
+    src: url('/static/fonts/intro_inline-webfont.woff2') format('woff2'),
+         url('/static/fonts/intro_inline-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
 
 
 #buspick {
@@ -75,8 +90,8 @@ border: white;
 }
 
 .page_title{
-  font-family: Ostrich, bold;
-  font-size:180px;
+  font-family: 'intro_inlineregular';
+  font-size:120px;
   color:#FF6B6B;
   padding: 10px 0px 50px 0px;
 }
@@ -98,8 +113,8 @@ border: white;
 }
 
 #pageheader{
-  font-family: Ostrich, bold;
-  font-size:40px;
+  font-family: 'intro_regular';
+  font-size:30px;
   color:#FF6B6B;
 }
 
@@ -133,7 +148,7 @@ border: white;
 .cust-quotes blockquote p{
   font-size:24px;
   font-weight:normal;
-  font-family: 'Open Sans Condensed', sans-serif;
+  font-family: 'Raleway', sans-serif;
   color:#FF6B6B;
   line-height: 30px;
   margin-bottom: 10px;
@@ -168,11 +183,12 @@ border: white;
 .comment-name{
   font-size:24px;
   font-weight:normal;
-  font-family: 'Open Sans Condensed', sans-serif;
+  font-family: 'Raleway', sans-serif;
   color:#FF6B6B;
 
 
 }
+
 /*BUSDETAIL*/
 
 
@@ -197,8 +213,8 @@ border: white;
 }
 
 body {
-  padding: 150px 0;
-  font: 13px 'Open Sans Condensed', sans-serif;
+  padding: 250px 0;
+  font-family: 'intro_regular';
 }
 
 #weather {
@@ -295,6 +311,7 @@ i {
 
 #weather .currently {
   margin: 30px 20px;
+  text-align: center;
 }
 
 /*/*//*BASE *########################################*/
@@ -359,83 +376,6 @@ body {
 
 }
 
-/* Right triangle placed top left flush. */
-.tri-right.border.left-top:before {
-  content: ' ';
-  position: absolute;
-  width: 0;
-  height: 0;
-  left: -40px;
-  right: auto;
-  top: -8px;
-  bottom: auto;
-  border: 32px solid;
-  border-color: #666 transparent transparent transparent;
-}
-.tri-right.left-top:after{
-  content: ' ';
-  position: absolute;
-  width: 0;
-  height: 0;
-  left: -20px;
-  right: auto;
-  top: 0px;
-  bottom: auto;
-  border: 22px solid;
-  border-color: lightyellow transparent transparent transparent;
-}
-
-/* Right triangle, left side slightly down */
-.tri-right.border.left-in:before {
-  content: ' ';
-  position: absolute;
-  width: 0;
-  height: 0;
-  left: -40px;
-  right: auto;
-  top: 30px;
-  bottom: auto;
-  border: 20px solid;
-  border-color: #FF6B6B #FF6B6B transparent transparent;
-}
-.tri-right.left-in:after{
-  content: ' ';
-  position: absolute;
-  width: 0;
-  height: 0;
-  left: -20px;
-  right: auto;
-  top: 38px;
-  bottom: auto;
-  border: 12px solid;
-  border-color: #FE999C transparent transparent;
-}
-
-/*Right triangle, placed bottom left side slightly in*/
-.tri-right.border.btm-left:before {
-  content: ' ';
-  position: absolute;
-  width: 0;
-  height: 0;
-  left: -8px;
-  right: auto;
-  top: auto;
-  bottom: -40px;
-  border: 32px solid;
-  border-color: transparent transparent transparent #FF6B6B;
-}
-.tri-right.btm-left:after{
-  content: ' ';
-  position: absolute;
-  width: 0;
-  height: 0;
-  left: 0px;
-  right: auto;
-  top: auto;
-  bottom: -20px;
-  border: 22px solid;
-  border-color: transparent transparent transparent lightyellow;
-}
 
 /*Right triangle, placed bottom left side slightly in*/
 .tri-right.border.btm-left-in:before {
@@ -463,104 +403,6 @@ body {
   border-color: #FF6B6B transparent transparent #FF6B6B;
 }
 
-/*Right triangle, placed bottom right side slightly in*/
-.tri-right.border.btm-right-in:before {
-  content: ' ';
-  position: absolute;
-  width: 0;
-  height: 0;
-  left: auto;
-  right: 30px;
-  bottom: -40px;
-  border: 20px solid;
-  border-color: #FE999C #FE999C transparent transparent;
-}
-.tri-right.btm-right-in:after{
-  content: ' ';
-  position: absolute;
-  width: 0;
-  height: 0;
-  left: auto;
-  right: 38px;
-  bottom: -20px;
-  border: 12px solid;
-  border-color: #FF6B6B #FF6B6B transparent transparent;
-}
-
-.tri-right.border.btm-right:before {
-  content: ' ';
-  position: absolute;
-  width: 0;
-  height: 0;
-  left: auto;
-  right: -8px;
-  bottom: -40px;
-  border: 20px solid;
-  border-color: #FE999C #FE999C transparent transparent;
-}
-.tri-right.btm-right:after{
-  content: ' ';
-  position: absolute;
-  width: 0;
-  height: 0;
-  left: auto;
-  right: 0px;
-  bottom: -20px;
-  border: 12px solid;
-  border-color: lightyellow lightyellow transparent transparent;
-}
-
-/* Right triangle, right side slightly down*/
-.tri-right.border.right-in:before {
-  content: ' ';
-  position: absolute;
-  width: 0;
-  height: 0;
-  left: auto;
-  right: -40px;
-  top: 30px;
-  bottom: auto;
-  border: 20px solid;
-  border-color: #FE999C transparent transparent #666;
-}
-.tri-right.right-in:after{
-  content: ' ';
-  position: absolute;
-  width: 0;
-  height: 0;
-  left: auto;
-  right: -20px;
-  top: 38px;
-  bottom: auto;
-  border: 12px solid;
-  border-color: lightyellow transparent transparent lightyellow;
-}
-
-/* Right triangle placed top right flush. */
-.tri-right.border.right-top:before {
-  content: ' ';
-  position: absolute;
-  width: 0;
-  height: 0;
-  left: auto;
-  right: -40px;
-  top: -8px;
-  bottom: auto;
-  border: 32px solid;
-  border-color: #666 transparent transparent transparent;
-}
-.tri-right.right-top:after{
-  content: ' ';
-  position: absolute;
-  width: 0;
-  height: 0;
-  left: auto;
-  right: -20px;
-  top: 0px;
-  bottom: auto;
-  border: 20px solid;
-  border-color: lightyellow transparent transparent transparent;
-}
 
 
 .talktext{
@@ -612,12 +454,12 @@ body {
 }
 
 .rating > input:checked ~ label {
-    color: #f70;
+    color: #FE999C;
 }
 
 .rating:not(:checked) > label:hover,
 .rating:not(:checked) > label:hover ~ label {
-    color: gold;
+    color: #E24549;
   
 }
 
@@ -626,7 +468,7 @@ body {
 .rating > input:checked ~ label:hover,
 .rating > input:checked ~ label:hover ~ label,
 .rating > label:hover ~ input:checked ~ label {
-    color: #ea0;
+    color: #FE999C;
     text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
 }
 
@@ -636,5 +478,79 @@ body {
     left:2px;
 }
 /*STAR RATING#############################*/
+
+/*BUSNUMBER##########################*/
+
+     /* CSS talk bubble */
+.container{
+  padding: 5% 5%;
+}
+
+/* CSS talk bubble */
+.talk-bubble1 {
+  margin: 40px;
+  display: inline-block;
+  position: relative;
+  width: 200px;
+  height: auto;
+  background-color: #FF6B6B;
+}
+.border1{
+  border: 8px solid #FE999C;
+}
+.round1{
+  border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+
+}
+
+
+/*Right triangle, placed bottom left side slightly in*/
+.tri-right.border.btm-left-in:before1 {
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 30px;
+  right: auto;
+  top: auto;
+  bottom: 40px;
+  border: 20px solid;
+  border-color: #FE999C transparent transparent #FE999C;
+}
+.tri-right.btm-left-in:after1{
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 38px;
+  right: auto;
+  top: auto;
+  bottom: -20px;
+  border: 12px solid;
+  border-color: #FF6B6B transparent transparent #FF6B6B;
+}
+
+
+
+
+.talktext1{
+  padding: 1em;
+  text-align: center;
+  line-height: 1.5em;
+  list-style: none;
+  font-size: 60px;
+  color: white;
+}
+.talktext1 p{
+  /* remove webkit p margins */
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
+}
+
+
+
+
 
   

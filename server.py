@@ -49,8 +49,14 @@ def home():
 
 @app.route('/stop_info', methods=['GET'])
 def stop_info():
-    latitude = request.args.get('lat')
-    longitude = request.args.get('long')
+    # latitude = request.args.get('lat')
+    # longitude = request.args.get('long')
+
+
+    latitude = 37.7993
+    longitude = -122.3977
+
+
 
     bus_stop_id = [u.__dict__ for u in Stop.query.filter(Stop.stop_lat + .001400 >= latitude, 
                                     Stop.stop_lat - .001400 <= latitude, 
