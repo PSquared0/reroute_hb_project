@@ -1,12 +1,28 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<p> Bus Arrivals</p>
 
 {% for key, value in stop_dict.iteritems() %}
-    <li><a href="/bus_detail?bus={{ value.num[0] }}" +>{{ value.name[0] }}</a>
-    {{ value.dir[0] }} {{ value.stop[0] }} {{ value.mins[0] }}
-    </li>
+    <section id="pricing-table">
+            <div class="container">
+                <div class="row">
+                    <div class="pricing">
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <div class="pricing-table">
+                                <div class="pricing-header">
+                                    <p class="pricing-title" link="white"><a href="/bus_detail?bus={{ value.num[0] }}">{{ value.name[0] }}</a></p>
+                                    <p class="pricing-rate">{{ value.mins[0] }} <span>mins.</span></p>
+                                </div>
+
+                                <div class="pricing-list">
+                                    <ul>
+                                        <li>DIRECTION:<i class="fa fa-envelope"></i><span>{{ value.dir[0] }} </span> </li>
+                                        <li>STOP:<i class="fa fa-signal"></i><span>{{ value.stop[0] }}</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+        </section>
 {% endfor %}
 
 {% endblock %}

@@ -11,12 +11,27 @@
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 4px;
-    font-family: 'intro_regular';
+}
+.button-name{
+    background-color: #E24549;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: right;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
 }
 
-
 .margins{
-    padding: 10px 10px 10px 30px;
+    padding: 10px 10px 10px 5px;
+}
+
+.bus-margins{
+    padding: 40px 10px 10px 10px;
 }
 
 .navbar{
@@ -74,9 +89,14 @@ border: white;
 }
 
 #geolocation{
-    padding: 10px 10px 1px 45px;
+    padding: 10px 10px 1px 20px;
+    color:#08615E;
 }
 
+.dropdown {
+    padding: 10px 10px 1px 20px;
+    color:#08615E;
+}
 .homepage-info{
     padding: 0px 50px 0px 0px;
 }
@@ -84,15 +104,43 @@ border: white;
 .copy{
     padding: 10px 20px 1px 10px;
 }
+
+#bus_number{
+    padding: 10px 20px 1px 10px;
+    font-size:120px;
+}
 #busimage{
     height: 250px; 
     width: 550px; 
 }
 
+.choice {
+  color:black;
+}
+
+.submit-button{
+  color:#08615E;
+  font-size:20px;
+}
+
+
+.small-text{
+  font-family: 'Raleway', sans-serif;
+}
+
+.checkbox {
+  color:#08615E;
+}
+
+.score{
+  color:#08615E;
+  font-size:40px;
+}
+
 .page_title{
   font-family: 'intro_inlineregular';
   font-size:120px;
-  color:#FF6B6B;
+  color:#08615E;
   padding: 10px 0px 50px 0px;
 }
 
@@ -169,8 +217,27 @@ border: white;
   padding: 10px 10px 1px 10px;
 }
 
-#comments{
-  padding: 10px 10px 1px 10px;
+.ratings{
+  padding: 0px 10px 0px 5px;
+  color:#08615E;
+  font-size: 150px;
+}
+#ratedBus{
+  padding: 10px 10px 0px 10px;
+  color: black;
+}
+
+.ratingserif{
+  font-family: 'Raleway', sans-serif;
+  font-size: 35px;
+  font-weight: bold;
+
+}
+
+.ratingserif1{
+  font-family: 'Raleway', sans-serif;
+  font-size:15px;
+
 }
 
 .chartborder {
@@ -479,78 +546,266 @@ body {
 }
 /*STAR RATING#############################*/
 
+
+
+
+
 /*BUSNUMBER##########################*/
-
-     /* CSS talk bubble */
-.container{
-  padding: 5% 5%;
+.circle {
+margin-left: auto;
+margin-right: auto;
+border-radius: 50%;
+width: 25%;
+position: relative;
+background-color: #08615E;
 }
 
-/* CSS talk bubble */
-.talk-bubble1 {
-  margin: 40px;
-  display: inline-block;
+.circle-solid{
+background-color: #CA1F23;
+}
+
+.circle:before {
+content: "";
+display: block;
+padding-top: 100%;
+
+}
+
+.circle-inner {
+position: absolute;
+top: 0;
+left: 0;
+bottom: 0;
+right: 0;
+text-align: center;
+}
+
+
+.score-text {
+margin: auto;
+position: absolute;
+top: 0;
+left: 0;
+bottom: 0;
+right: 0;
+height: 3vw;
+line-height: 3vw;
+font-size: 7vw;
+color: white;
+}
+
+/*BUSS-ARRIVAL###########################*/
+
+/*Font Loded*/
+#registers:link {
+    color: #08615E;
+}
+#logbox1 {
+top: 0;
+left: 0;
+bottom: 0;
+right: 0;
+text-align: center;
+color: #08615E;
+
+}
+
+#logbox {
+top: 0;
+left: 0;
+bottom: 0;
+right: 0;
+text-align: center;
+color: #08615E;
+
+}
+
+.inputButton{
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  font: bold;
+
+}
+.input{
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  font: bold;
+
+}
+
+#login_id:link {
+    color: #08615E;
+}
+
+#login_id:visited {
+    color: #08615E;
+}
+
+#average:link {
+    color: #08615E;
+    font-family: 'Raleway', sans-serif;
+}
+
+#average:visited {
+    color: #08615E;
+    font-family: 'Raleway', sans-serif;
+}
+
+#registers:visited {
+    color: #08615E;
+}
+
+a:link {
+    color: white;
+}
+
+/* visited link */
+a:visited {
+    color: white;
+}
+
+/* mouse over link */
+a:hover {
+    color: white;
+}
+
+/* selected link */
+a:active {
+    color: white;
+}
+.modal{
+  color: black;
+  font-size: 18px;
+  font-family: 'intro_inlineregular';
+}
+.btn-custom {
+  color: #bdc3c7;
+  font-size: 18px;
+  border: 1px solid #bdc3c7;
+}
+.btn-custom:hover {
+  color: #ffffff;
+  border: 1px solid #ffffff;
+}
+#pricing-table {
+  padding-top: 30px;
+}
+#pricing-table .pricing {
+  margin: 0;
+  padding: 0;
+  font-family: 'intro_inlineregular';
+}
+#pricing-table .pricing .pricing-table {
+  padding-bottom: 30px;
+}
+#pricing-table .pricing .pricing-table .pricing-header {
   position: relative;
-  width: 200px;
-  height: auto;
-  background-color: #FF6B6B;
-}
-.border1{
-  border: 8px solid #FE999C;
-}
-.round1{
-  border-radius: 100px;
-  -webkit-border-radius: 100px;
-  -moz-border-radius: 100px;
-
-}
-
-
-/*Right triangle, placed bottom left side slightly in*/
-.tri-right.border.btm-left-in:before1 {
-  content: ' ';
-  position: absolute;
-  width: 0;
-  height: 0;
-  left: 30px;
-  right: auto;
-  top: auto;
-  bottom: 40px;
-  border: 20px solid;
-  border-color: #FE999C transparent transparent #FE999C;
-}
-.tri-right.btm-left-in:after1{
-  content: ' ';
-  position: absolute;
-  width: 0;
-  height: 0;
-  left: 38px;
-  right: auto;
-  top: auto;
-  bottom: -20px;
-  border: 12px solid;
-  border-color: #FF6B6B transparent transparent #FF6B6B;
-}
-
-
-
-
-.talktext1{
-  padding: 1em;
+  background: #08615E;
+  padding: 22px 22px;
   text-align: center;
-  line-height: 1.5em;
-  list-style: none;
-  font-size: 60px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+#pricing-table .pricing .pricing-table .pricing-header .pricing-title {
   color: white;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 24px;
+  text-align: center;
+  font-weight: 700;
 }
-.talktext1 p{
-  /* remove webkit p margins */
-  -webkit-margin-before: 0em;
-  -webkit-margin-after: 0em;
+#pricing-table .pricing .pricing-table .pricing-header .pricing-rate {
+  font-size: 90px;
+  font-weight: 700;
+  color: #ffffff;
+  position: relative;
+  text-align: center;
+}
+#pricing-table .pricing .pricing-table .pricing-header .pricing-rate sup {
+  font-size: 12px;
+  position: relative;
+  top: -30px;
+  color: #bdc3c7;
+
+}
+#pricing-table .pricing .pricing-table .pricing-header .pricing-rate span {
+  font-size: 15px;
+  color: white;
+  text-transform: uppercase;
+}
+#pricing-table .pricing .pricing-list {
+  padding: 10px 0 10px 0;
+  background: #ffffff;
+  border: 1px solid #e3e3e3;
+}
+#pricing-table .pricing .pricing-list ul {
+  padding: 0px;
+  display: table;
+  margin: 0px auto;
+}
+#pricing-table .pricing .pricing-list ul li {
+  list-style: none;
+  border-bottom: 1px solid #EAECEB;
+  color: #bdc3c7;
+  font-size: 12px;
+  line-height: 42px;
+  font-family: 'Raleway', sans-serif;
+
+}
+#pricing-table .pricing .pricing-list ul li:last-child {
+  border: none;
+}
+#pricing-table .pricing .pricing-list ul li i {
+  margin-right: 12px;
+  color: #bdc3c7;
+  font-family: 'Raleway', sans-serif;
+
+}
+#pricing-table .pricing .pricing-list ul li span {
+  color: #34495e;
+  font-family: 'Raleway', sans-serif;
+
 }
 
 
 
 
+/*TOPRATED####################*/
 
-  
+/*BUSNUMBER##########################*/
+body{margin:20px;}
+
+
+.btn-circle.btn-xl {
+  width: 100px;
+  height: 100px;
+  padding: 10px 16px 4px 16px;
+  font-size: 24px;
+  line-height: 3;
+  border-radius: 50px;
+  border-color: #08615E;
+  background-color: #08615E;
+}
+
+/*DROPDOWN#####################*/
+
+.custom-combobox {
+    position: relative;
+    display: inline-block;
+  }
+  .custom-combobox-toggle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin-left: -1px;
+    padding: 0;
+  }
+  .custom-combobox-input {
+    margin: 0;
+    padding: 5px 10px;
+  }
+
+
+
+
+

@@ -5,10 +5,9 @@
 
 <center>
 
-  <div class="row">
+  <div class="row" id=top-scroll>
   <div style="position: relative; left: 0; top: 0;">
-  <h1 class=page_title>reRoute</h1>
-  <img src="/static/images/Bus_logo.svg" height="450" width="450" style="position: relative; top: 0; left: 0;"/>
+  <img src="/static/images/Artboard 1.svg" height=100% width=auto style="position: relative; top: 0; left: 0;"/>
  
   </div>
   </div>
@@ -30,22 +29,24 @@ The official paint color is “International Orange.”</p></blockquote>
 </center>
 
 
-<center> <div id="weather"></center>
+<center> <div id="weather"></div></div></center>
 
 <button class="js-geolocation" style="display: none;">Use Your Location</button>
 
-<div class="copy">
-<p id="pageheader">top rated</p><br>
-  {% for tops in top_rated %}
-    <ul id=numbers>
-    <a href="/bus_detail?bus={{ tops[0] }}"> {{ tops[0] }}</a>
-    </ul>
+
+<div class="margins"
+<p id="pageheader">top rated</p>
+{% for tops in top_rated %}
+
+<a href="/bus_detail?bus={{ tops[0] }}" class="btn btn-success btn-circle btn-xl">{{ tops[0] }}</a>
+
   {% endfor %}
+</div>
 
   
 <div id="bus_pick">
-  <h3 id="pageheader">pick a bus line</h3>
-
+  <h3 id="pageheader">pick a bus line</h3><br>
+    <br>
     <ul class="dropdown">
     <form action='/bus_detail', method="get">
     <select name="bus">
@@ -59,6 +60,12 @@ The official paint color is “International Orange.”</p></blockquote>
     </ul>
 </div>
 
+<br>
+<br>
+
+
+
+
 
 <form action="#">
   <div>
@@ -67,10 +74,14 @@ The official paint color is “International Orange.”</p></blockquote>
 </form>
 
 
-  <p id="pageheader">Just tell me what buses are close by</p>
+  <p id="pageheader">Nearby Stops</p>
+  <br><br>
+
+  <span id=result></span>
+
 
 <div id="geolocation">
-<button onclick="showlocation()">Find Me</button>
+<button onclick="showlocation()">use my location</button>
 <div id="myProgress">
   <div id="myBar"></div>
 </div>
@@ -80,6 +91,8 @@ The official paint color is “International Orange.”</p></blockquote>
 
 
 <script type="text/javascript">
+
+
 var lat = null
 var long = null
 
@@ -110,6 +123,10 @@ function getbusinfo(){
 
 }
 
+$('#top-scroll').on('click', function(){
+  $('html,body').animate({scrollTop: 0}, 1000,'swing');
+});
+
 </script>
 
 <center>
@@ -117,6 +134,8 @@ function getbusinfo(){
 </center>
 
 <span id=result></span>
+
+  </div>
 
 
 

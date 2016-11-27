@@ -1,20 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
 
-
-  <div class="talk-bubble1 tri-right1  border1 round btm-left-in1">
-  <div class="talktext1">
-     <h1> {{ rated_bus }}</h1>
+<div class="bus-margins">
+  <div class="circle circle-border">
+     <div class="circle-inner">
+         <div class="score-text">
+         {{ rated_bus }} 
+         </div>
+        </div>
     </div>
-    </div>
+  </div>
+ 
+ 
 
 
 <div class="margins">
 
 {% if "user_id" in session %}
-    <h2>Your Rating</h2>
     {% if user_rating %}
-        <p>You currently rate this : {{ score }}</p>
+        <p class="rating-text">You currently rate this bus:</p><p class="score">{{ score }}</p>
     {% endif %}
       <form action="/ratings" method="POST" id="usrform"  name="star">
   
@@ -33,6 +37,7 @@
           <br>
           <br>
           <strong class="choice">Choose a rating</strong><br><br>
+          <div class="checkbox">
           <input type="checkbox" name="filters" value="awc"> The Crowded Bus<br>
           <input type="checkbox" name="filters" value="awl"> Arrives Every Blue Moon<br>
           <input type="checkbox" name="filters" value="sdn"> Stops That Throw You From Your Seat<br>
@@ -47,16 +52,19 @@
           <input type="checkbox" name="filters" value="dpt"> Departs as You Get to Stop<br>
           <input type="checkbox" name="filters" value="wss"> Will Skip Your Stop<br>
           <input type="checkbox" name="filters" value="mls"> Has Mystery Liquid in Seats<br>
+          </div>
 
           <br>
           <br>
 
-          <textarea placeholder= "Add your acclamations or condemnations here" rows="4" cols="50" name="comments" form="usrform"></textarea> max 140 characters
+          <textarea placeholder= "Add your acclamations or condemnations here" rows="4" cols="50" name="comments" form="usrform"></textarea> <p class="small-text">max 140 characters</p>
           <br>
           <br>
-          <input type="submit" value="Submit">
+          <input type="submit" value="Submit" class="submit-button">
           </form>
  </div>
+
+
 
 {% endif %}
 

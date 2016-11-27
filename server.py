@@ -72,6 +72,7 @@ def stop_info():
 
     
     stop_dict = reroute.get_bus_name_info(xmls)
+    print stop_dict
 
     if reroute.get_bus_name_info(xmls) is None:
         stop_dict = "Looks like muni doesn't run in your area, move to SF if you can afford it"
@@ -148,11 +149,6 @@ def bus_lists():
         count = chart_dict.get(chart[1].filter_name, 0)
         chart_dict[chart[1].filter_name] = count +1
 
-
-    print 'xxxxxxcomments'
-    print average 
-    print score_count
-    print result_score
 
     user_id = session.get("user_id")
 

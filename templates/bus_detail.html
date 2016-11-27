@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div id=comments>
+<div id="ratedBus">
 
 
-<h1> {{ info.bus_name }}</h1>
-<h1> {{ info.bus_lname }}</h1>
+<h1 class="ratings"> {{ info.bus_name }}</h1>
+<h1 class="ratingserif"> {{ info.bus_lname }}</h1>
 
-<p> This bus is rated at an: </p> <h3> {{ average }}</h3> 
+<p class="ratingserif1"> This bus is rated at an: </p> <h3 class="ratings"> {{ average }}</h3> 
 
 {% if "user_id" in session %}
-  <a href="/ratings">Rate this Bus</a>
+ <a id="average" href="/ratings">Rate this Bus</a>
 {% endif %}
 
 </div>
