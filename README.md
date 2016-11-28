@@ -8,9 +8,9 @@ As an avid non driver, the developer has amassed a ton of information about what
 
 ## Features
 
-• Locates nearest but stops
-• Provides bus arrival times
-• Provides user created ratings for bus lines
+- Locates nearest but stops
+- Provides bus arrival times
+- Provides user created ratings for bus lines
 
 ## API Reference
 
@@ -26,7 +26,7 @@ SQLAlchemy, Flask, Javascript, jQuery, Python, ChartsJS. Postgres, Ajax, Beautif
 
 ## Upcoming Features
 
-• Text responsive menus
-• Trip Planning
-• Proximity to stop notifications
-• Editing comments
+- Text responsive menus
+- Trip Planning
+- Proximity to stop notifications
+- Editing comments
