@@ -18,7 +18,7 @@ The APIs for Next Bus and 511 transit were used for this web app.
 
 ## Languages and Libraries
 
-SQLAlchemy, Flask, Javascript, jQuery, Python, ChartsJS. Postgres, Ajax, Beautiful Soup, Bootstrap
+SQLAlchemy, Flask, Javascript, jQuery, Python, Charts.js. Postgres, Ajax, Beautiful Soup, Bootstrap
 
 ## Schema
 

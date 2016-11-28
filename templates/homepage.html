@@ -45,17 +45,17 @@ The official paint color is “International Orange.”</p></blockquote>
 
   
 <div id="bus_pick">
-  <h3 id="pageheader">pick a bus line</h3><br>
+  <h3 id="pageheader" class="dropdown">pick a bus line</h3><br>
     <br>
     <ul class="dropdown">
     <form action='/bus_detail', method="get">
     <select name="bus">
     {% for bus in buses %}
-    <option value="{{ bus.bus_name }}">{{ bus.bus_name }}</option>
+    <option  class="dropdown-content"value="{{ bus.bus_name }}">{{ bus.bus_name }}</option>
     {% endfor %}
     </select>
     <br><br>
-    <input type="submit">
+    <input type="submit" value="Select Bus" class="better-btn"> 
     </form>
     </ul>
 </div>

@@ -27,7 +27,7 @@
 }
 
 .margins{
-    padding: 10px 10px 10px 5px;
+    padding: 10px 10px 10px 20px;
 }
 
 .bus-margins{
@@ -71,7 +71,7 @@ border: white;
 
 }
 
-
+s
 
 
 @font-face {
@@ -89,7 +89,7 @@ border: white;
 }
 
 #geolocation{
-    padding: 10px 10px 1px 20px;
+    padding: 10px 10px 1px 15px;
     color:#08615E;
 }
 
@@ -118,10 +118,6 @@ border: white;
   color:black;
 }
 
-.submit-button{
-  color:#08615E;
-  font-size:20px;
-}
 
 
 .small-text{
@@ -135,6 +131,17 @@ border: white;
 .score{
   color:#08615E;
   font-size:40px;
+}
+
+.better-btn {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
 }
 
 .page_title{
@@ -555,7 +562,7 @@ body {
 margin-left: auto;
 margin-right: auto;
 border-radius: 50%;
-width: 25%;
+width: 20%;
 position: relative;
 background-color: #08615E;
 }
@@ -590,7 +597,7 @@ bottom: 0;
 right: 0;
 height: 3vw;
 line-height: 3vw;
-font-size: 7vw;
+font-size: 5vw;
 color: white;
 }
 
@@ -777,11 +784,10 @@ body{margin:20px;}
 
 
 .btn-circle.btn-xl {
-  width: 100px;
-  height: 100px;
+  width: 100px;    
   padding: 10px 16px 4px 16px;
-  font-size: 24px;
-  line-height: 3;
+  font-size: 21px; 
+  line-height: 4 ;
   border-radius: 50px;
   border-color: #08615E;
   background-color: #08615E;
@@ -789,23 +795,30 @@ body{margin:20px;}
 
 /*DROPDOWN#####################*/
 
-.custom-combobox {
-    position: relative;
+button {
+    background-color: #08615E; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
     display: inline-block;
-  }
-  .custom-combobox-toggle {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    margin-left: -1px;
-    padding: 0;
-  }
-  .custom-combobox-input {
-    margin: 0;
-    padding: 5px 10px;
-  }
+    font-size: 16px;
+    border-radius: 4px;
+}
 
 
+input {
+    background-color: #08615E; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+}
 
 
 
