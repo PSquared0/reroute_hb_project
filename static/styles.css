@@ -1,4 +1,6 @@
 
+
+
 .button{
     background-color: #E24549;
     border: none;
@@ -26,9 +28,7 @@
     border-radius: 4px;
 }
 
-.margins{
-    padding: 10px 10px 10px 20px;
-}
+
 
 .bus-margins{
     padding: 40px 10px 10px 10px;
@@ -71,8 +71,6 @@ border: white;
 
 }
 
-s
-
 
 @font-face {
     font-family: 'intro_inlineregular';
@@ -88,15 +86,16 @@ s
     padding: 10px 10px 10px 10px;
 }
 
-#geolocation{
-    padding: 10px 10px 1px 15px;
+#geolocation {
     color:#08615E;
 }
 
-.dropdown {
-    padding: 10px 10px 1px 20px;
+.dropdown-style  {
+    padding: 10px 10px 10px 0px;
     color:#08615E;
 }
+
+
 .homepage-info{
     padding: 0px 50px 0px 0px;
 }
@@ -133,16 +132,6 @@ s
   font-size:40px;
 }
 
-.better-btn {
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-}
 
 .page_title{
   font-family: 'intro_inlineregular';
@@ -171,6 +160,13 @@ s
   font-family: 'intro_regular';
   font-size:30px;
   color:#FF6B6B;
+}
+
+.bus_pick{
+  font-family: 'intro_regular';
+  font-size:30px;
+  color:#FF6B6B;
+  padding: 10px 10px 10px 0px;
 }
 
 
@@ -225,25 +221,45 @@ s
 }
 
 .ratings{
-  padding: 0px 10px 0px 5px;
+  padding: 0px 10px 0px 55px;
   color:#08615E;
-  font-size: 150px;
+  font-size: 140px;
 }
+.ratings1{
+  padding: 0px 10px 0px 55px;
+  color:#FF6B6B;
+  font-size: 140px;
+}
+
+
 #ratedBus{
-  padding: 10px 10px 0px 10px;
+  padding: 10px 10px 0px 00px;
   color: black;
+
 }
 
 .ratingserif{
   font-family: 'Raleway', sans-serif;
   font-size: 35px;
   font-weight: bold;
+  padding: 0px 10px 0px 50px;
 
 }
 
 .ratingserif1{
   font-family: 'Raleway', sans-serif;
   font-size:15px;
+  font-size:15px;padding: 0px 10px 0px 50px;
+
+
+}
+
+.ratingserif2{
+  font-family: 'intro_regular';
+  font-size:25px;
+  font-size:15px;
+  padding: 0px 10px 0px 35px;
+
 
 }
 
@@ -427,8 +443,9 @@ body {
       /*TALK BUBBLES###################################
 
       /* CSS talk bubble */
-..container {
+.container {
   padding: 5% 5%;
+  display: inline-block;
 }
 
 /* CSS talk bubble */
@@ -637,6 +654,7 @@ color: #08615E;
   font-family: 'Raleway', sans-serif;
   font-size: 14px;
   font: bold;
+  padding: 3px 3px 3px 3px;
 
 }
 
@@ -651,11 +669,13 @@ color: #08615E;
 #average:link {
     color: #08615E;
     font-family: 'Raleway', sans-serif;
+     padding: 3px 3px 15px 50px;
 }
 
 #average:visited {
     color: #08615E;
     font-family: 'Raleway', sans-serif;
+     padding: 3px 3px 15px 50px;
 }
 
 #registers:visited {
@@ -782,10 +802,13 @@ a:active {
 /*BUSNUMBER##########################*/
 body{margin:20px;}
 
+.checkbox{
+  padding: 10px 16px 4px 15px;
+}
 
 .btn-circle.btn-xl {
   width: 100px;    
-  padding: 10px 16px 4px 16px;
+  padding: 10px 16px 4px 15px;
   font-size: 21px; 
   line-height: 4 ;
   border-radius: 50px;
@@ -807,8 +830,7 @@ button {
     border-radius: 4px;
 }
 
-
-input {
+.inputButton{
     background-color: #08615E; /* Green */
     border: none;
     color: white;
@@ -820,5 +842,25 @@ input {
     border-radius: 4px;
 }
 
+.better-btn
+{
+    background-color: #08615E; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+}
 
+#signup{
+  padding: 1px 1px 1px 1px;
+}
 
+canvas {
+  padding: 30px 0px 0px 0px;
+  max-width: 40%;
+  display: inline;
+}

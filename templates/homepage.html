@@ -13,7 +13,6 @@
   </div>
 </center>
 
-
 <center>
 <div class="cust-quotes">
   <blockquote data-timeout="5000"><p>The original Spanish name for San Francisco was Yerba Buena, meaning "good herb" or "good grass"</p></blockquote>
@@ -33,7 +32,9 @@ The official paint color is “International Orange.”</p></blockquote>
 
 <button class="js-geolocation" style="display: none;">Use Your Location</button>
 
-
+<div class="row">
+<div class="col-sm-1"></div>
+<div class="col-sm-10">
 <div class="margins"
 <p id="pageheader">top rated</p>
 {% for tops in top_rated %}
@@ -42,14 +43,20 @@ The official paint color is “International Orange.”</p></blockquote>
 
   {% endfor %}
 </div>
+</div>
+<div class="col-sm-"></div>
+</div>
 
-  
+<br>  
+
+  <div class="row">
+<div class="col-sm-1"></div>
+<div class="col-sm-10">
 <div id="bus_pick">
   <h3 id="pageheader" class="dropdown">pick a bus line</h3><br>
-    <br>
-    <ul class="dropdown">
+    <ul class="dropdown-style">
     <form action='/bus_detail', method="get">
-    <select name="bus">
+    <select class="dropdown-style" name="bus">
     {% for bus in buses %}
     <option  class="dropdown-content"value="{{ bus.bus_name }}">{{ bus.bus_name }}</option>
     {% endfor %}
@@ -58,6 +65,10 @@ The official paint color is “International Orange.”</p></blockquote>
     <input type="submit" value="Select Bus" class="better-btn"> 
     </form>
     </ul>
+</div>
+</div>
+</div>
+<div class="col-sm-"></div>
 </div>
 
 <br>
@@ -72,20 +83,33 @@ The official paint color is “International Orange.”</p></blockquote>
     <input type="hidden" name="datatosendback" id="datatosendback">
   </div>
 </form>
-
-
+<div class="row">
+<div class="col-sm-1"></div>
+<div class="col-sm-10"
   <p id="pageheader">Nearby Stops</p>
-  <br><br>
+  <br>
+
 
   <span id=result></span>
+</div>
+</div>
+<div class="col-sm-"></div>
+</div>
 
 
+<div class="row">
+<div class="col-sm-1"></div>
+<div class="col-sm-10"
 <div id="geolocation">
 <button onclick="showlocation()">use my location</button>
 <div id="myProgress">
   <div id="myBar"></div>
 </div>
 </div>
+</div>
+</div>
+</div>
+<div class="col-sm-"></div>
 </div>
 
 

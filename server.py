@@ -26,7 +26,7 @@ def home():
 
 
     buses = reroute.get_bus_list()
-    top_rated = db.session.query(Rating.bus_code).group_by(Rating.bus_code).order_by(desc(func.count(Rating.bus_code))).all()
+    top_rated = db.session.query(Rating.bus_code).group_by(Rating.bus_code).order_by(desc(func.count(Rating.bus_code))).limit(10).all()
     
 
 
@@ -49,12 +49,12 @@ def home():
 
 @app.route('/stop_info', methods=['GET'])
 def stop_info():
-    # latitude = request.args.get('lat')
-    # longitude = request.args.get('long')
+    latitude = request.args.get('lat')
+    longitude = request.args.get('long')
 
 
-    latitude = 37.7993
-    longitude = -122.3977
+    # latitude = 37.7993
+    # longitude = -122.3977
 
 
 

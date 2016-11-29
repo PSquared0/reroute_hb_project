@@ -1,27 +1,30 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div id="ratedBus">
 
+
+<div class="row">
+<div id="ratedBus"  class="col-md-5" >
 
 <h1 class="ratings"> {{ info.bus_name }}</h1>
 <h1 class="ratingserif"> {{ info.bus_lname }}</h1>
 
-<p class="ratingserif1"> This bus is rated at an: </p> <h3 class="ratings"> {{ average }}</h3> 
+<p class="ratingserif1"> BUS RATING </p> 
+
+<h3 class="ratings1"> {{ average }}</h3> 
 
 {% if "user_id" in session %}
  <a id="average" href="/ratings">Rate this Bus</a>
 {% endif %}
 
 </div>
-<br>
-<br>
 
 
-<center></center><div class=chartborder>
-<canvas id="chart" width="50" height="50"></canvas>
+<!-- <div class="chartborder"> -->
+<canvas class="col-md-7" id="chart"></canvas>
+<!-- </div>
+ -->
 </div>
-</center>
 
 
 <script>
@@ -89,9 +92,12 @@ new Chart("chart",{
 
 </script>
 
-what folks are saying about the {{ info.bus_name }}<br>
+<p class="ratingserif2"> COMMENTS ABOUT THE {{ info.bus_name }}</p><br>
 <div class="container">
 <ul>
+ <div class="row">
+<div class="col-sm-1"></div>
+<div class="col-sm-10">
 
 {% for comment in comments %}
   <div class="talk-bubble tri-right  border round btm-left-in">
@@ -104,4 +110,10 @@ what folks are saying about the {{ info.bus_name }}<br>
 {% endfor %}
 </ul>
  </div>
+
+ </div>
+</div>
+<div class="col-sm-"></div>
+</div>
+
 {% endblock %}
