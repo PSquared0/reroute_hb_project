@@ -49,12 +49,12 @@ def home():
 
 @app.route('/stop_info', methods=['GET'])
 def stop_info():
-    latitude = request.args.get('lat')
-    longitude = request.args.get('long')
+    # latitude = request.args.get('lat')
+    # longitude = request.args.get('long')
 
 
-    # latitude = 37.7993
-    # longitude = -122.3977
+    latitude = 37.7845
+    longitude = -122.4080
 
 
 
@@ -344,15 +344,17 @@ def user():
 
 if __name__ == "__main__":
  
-    app.debug = False
-    app.jinja_env.auto_reload = app.debug
+    # app.debug = False
+    # app.jinja_env.auto_reload = app.debug
 
-    connect_to_db(app)
+    connect_to_db(app, os.environ.get("DATABASE_URL"))
+    db.create_all()
 
     # Use the DebugToolbar
-    DebugToolbarExtension(app)
+    # DebugToolbarExtension(app)
+    PORT = int(os.environ.get("PORT", 5000))
+    DEBUG = "NO_DEBUG" not in os.environ
 
-
-    
-    app.run(port=5000, host="0.0.0.0")
+    app.run(debug=True)    
+    app.run(port=PORT, host="0.0.0.0")
 
