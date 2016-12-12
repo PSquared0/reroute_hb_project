@@ -53,15 +53,16 @@ def stop_info():
     # longitude = request.args.get('long')
 
 
-    latitude = 37.7845
-    longitude = -122.4080
+    latitude = 37.7993
+    longitude = -122.3977
 
 
 
-    bus_stop_id = [u.__dict__ for u in Stop.query.filter(Stop.stop_lat + .001400 >= latitude, 
-                                    Stop.stop_lat - .001400 <= latitude, 
-                                    Stop.stop_lon + .001400 >= longitude ,
-                                    Stop.stop_lon - .001400 <= longitude).limit(3).all()]
+    bus_stop_id = [u.__dict__ for u in Stop.query.filter(
+                                                    Stop.stop_lat + .001400 >= latitude, 
+                                                    Stop.stop_lat - .001400 <= latitude, 
+                                                    Stop.stop_lon + .001400 >= longitude ,
+                                                    Stop.stop_lon - .001400 <= longitude).limit(3).all()]
 
 
 
@@ -344,17 +345,15 @@ def user():
 
 if __name__ == "__main__":
  
-    # app.debug = False
-    # app.jinja_env.auto_reload = app.debug
+    app.debug = False
+    app.jinja_env.auto_reload = app.debug
 
-    connect_to_db(app, os.environ.get("DATABASE_URL"))
-    db.create_all()
+    connect_to_db(app)
 
     # Use the DebugToolbar
-    # DebugToolbarExtension(app)
-    PORT = int(os.environ.get("PORT", 5000))
-    DEBUG = "NO_DEBUG" not in os.environ
+    DebugToolbarExtension(app)
 
-    app.run(debug=True)    
-    app.run(port=PORT, host="0.0.0.0")
+
+    
+    app.run(port=5000, host="0.0.0.0")
 
