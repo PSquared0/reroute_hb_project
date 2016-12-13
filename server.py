@@ -1,4 +1,5 @@
 """Bus Ratings."""
+import os
 
 from jinja2 import StrictUndefined
 
@@ -49,12 +50,12 @@ def home():
 
 @app.route('/stop_info', methods=['GET'])
 def stop_info():
-    # latitude = request.args.get('lat')
-    # longitude = request.args.get('long')
+    latitude = request.args.get('lat')
+    longitude = request.args.get('long')
 
 
-    latitude = 37.7993
-    longitude = -122.3977
+    # latitude = 37.7993
+    # longitude = -122.3977
 
 
 
@@ -344,16 +345,32 @@ def user():
 
 
 if __name__ == "__main__":
+
+    connect_to_db(app, os.environ.get("DATABASE_URL"))
+
+    # Create the tables we need from our models (if they already
+    # exist, nothing will happen here, so it's fine to do this each
+    # time on startup)
+    db.create_all(app=app)
+
+    DEBUG = "NO_DEBUG" not in os.environ
+    PORT = int(os.environ.get("PORT", 5000))
+
+    app.run(host="0.0.0.0", port=PORT, debug=DEBUG)
+
+
+
+    ####################################
  
-    app.debug = False
-    app.jinja_env.auto_reload = app.debug
+    # app.debug = False
+    # app.jinja_env.auto_reload = app.debug
 
-    connect_to_db(app)
+    # connect_to_db(app)
 
-    # Use the DebugToolbar
-    DebugToolbarExtension(app)
+    # # Use the DebugToolbar
+    # DebugToolbarExtension(app)
 
 
     
-    app.run(port=5000, host="0.0.0.0")
+    # app.run(port=5000, host="0.0.0.0")
 
