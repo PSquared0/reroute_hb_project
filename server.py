@@ -351,7 +351,7 @@ if __name__ == "__main__":
     # Create the tables we need from our models (if they already
     # exist, nothing will happen here, so it's fine to do this each
     # time on startup)
-    db.create_all(app=app)
+    # db.create_all(app=app)
 
     DEBUG = "NO_DEBUG" not in os.environ
     PORT = int(os.environ.get("PORT", 5000))
