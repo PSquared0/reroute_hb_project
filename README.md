@@ -6,9 +6,10 @@ Reroute is a peer to peer bus rating app for San Francisco Muni
 
 As an avid non driver, the developer has amassed a ton of information about what buses to take and when. This app wth allow others to share with info so users can get from point a to point b.
 
-## - Features
+## Features
 
-- Locates nearest but stops
+- Features
+- Locates nearest but stops
 - Provides bus arrival times
 - Provides user created ratings for bus lines
 
@@ -24,10 +25,12 @@ SQLAlchemy, Flask, Javascript, jQuery, Python, Charts.js. Postgres, Ajax, Beauti
 
 ![Alt text](/static/images/schema.jpg?raw=true "Optional Title")
 
-## - Upcoming Features
+## Upcoming Features
 
--
-- Text responsive menus
+
+- Future Updates
+
+- Text responsive menus
 - Trip Planning
 - Proximity to stop notifications
 - Editing comments
