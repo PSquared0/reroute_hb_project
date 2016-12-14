@@ -137,4 +137,4 @@ if __name__ == "__main__":
     def connect_to_db(app, db_uri=None):
         """Connect our application to our database."""
 
-    app.config['SQLALCHEMY_DATABASE_URI'] = db_uri or 'postgres:///hackbright'
+    app.config['SQLALCHEMY_DATABASE_URI'] = db_uri or 'postgres:///reroute'

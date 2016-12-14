@@ -11,9 +11,6 @@ from math import acos, cos, radians
 import reroute, requests
 from sqlalchemy import func, desc
 
-import psycopg2
-import urlparse
-
 app = Flask(__name__)
 
 app.secret_key = "ABC"
@@ -360,17 +357,6 @@ if __name__ == "__main__":
     PORT = int(os.environ.get("PORT", 5000))
 
     app.run(host="0.0.0.0", port=PORT, debug=DEBUG)
-
-    urlparse.uses_netloc.append("postgres")
-    url = urlparse.urlparse(os.environ["DATABASE_URL"])
-
-    conn = psycopg2.connect(
-        database=url.path[1:],
-        user=url.username,
-        password=url.password,
-        host=url.hostname,
-        port=url.port
-    )
 
 
 
