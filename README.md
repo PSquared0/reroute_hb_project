@@ -8,7 +8,7 @@ As an avid non driver, the developer has amassed a ton of information about what
 
 ## Features
 
-- Features
+
 - Locates nearest but stops
 - Provides bus arrival times
 - Provides user created ratings for bus lines
@@ -27,8 +27,6 @@ SQLAlchemy, Flask, Javascript, jQuery, Python, Charts.js. Postgres, Ajax, Beauti
 
 ## Upcoming Features
 
-
-- Future Updates
 
 - Text responsive menus
 - Trip Planning
