@@ -66,8 +66,6 @@ def stop_info():
                                                     Stop.stop_lon - .001400 <= longitude).limit(3).all()]
 
 
-
-
     info = reroute.get_stop_ids(bus_stop_id)
     urls = reroute.get_stop_info(info)
     xmls = reroute.send_api(urls)
