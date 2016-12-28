@@ -39,7 +39,6 @@ six==1.4.1
 SQLAlchemy==1.0.3
 tabulate==0.7.5
 untangle==1.1.0
-vboxapi==1.0
 wcwidth==0.1.7
 websocket-client==0.40.0
 Werkzeug==0.10.4
