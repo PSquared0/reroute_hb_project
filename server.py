@@ -7,7 +7,6 @@ from flask import Flask, jsonify, render_template, redirect, request, flash, ses
 from flask_debugtoolbar import DebugToolbarExtension
 
 from model import Stop, Bus, Rating, User, Bus_filter, Filter, connect_to_db, db
-from math import acos, cos, radians
 import reroute, requests
 from sqlalchemy import func, desc
 
