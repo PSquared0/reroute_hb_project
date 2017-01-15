@@ -8,6 +8,7 @@ class FlaskTest(TestCase):
 
     def setUp(self):
         """Stuff to do before every test."""
+        
 
         # Get the Flask test client
         self.client = app.test_client()
