@@ -3,10 +3,11 @@ import os
 
 from jinja2 import StrictUndefined
 
-from flask import Flask, jsonify, render_template, redirect, request, flash, session
+from flask import Flask, jsonify,render_template, redirect, request, flash, session
 from flask_debugtoolbar import DebugToolbarExtension
 
 from model import Stop, Bus, Rating, User, Bus_filter, Filter, connect_to_db, db
+from math import acos, cos, radians
 import reroute, requests
 from sqlalchemy import func, desc
 
@@ -63,6 +64,8 @@ def stop_info():
                                                     Stop.stop_lat - .001400 <= latitude, 
                                                     Stop.stop_lon + .001400 >= longitude ,
                                                     Stop.stop_lon - .001400 <= longitude).limit(3).all()]
+
+
 
 
     info = reroute.get_stop_ids(bus_stop_id)
