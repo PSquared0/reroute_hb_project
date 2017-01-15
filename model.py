@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
 
-##############################################################################
+#############################################################################
 # Model definitions
 
 class Bus(db.Model):
