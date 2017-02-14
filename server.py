@@ -19,7 +19,6 @@ app.jinja_env.undefined = StrictUndefined
 
 
 
-
 @app.route('/')
 def home():
     """Homepage"""
@@ -58,7 +57,6 @@ def stop_info():
     # longitude = -122.3977
 
 
-
     bus_stop_id = [u.__dict__ for u in Stop.query.filter(
                                                     Stop.stop_lat + .001400 >= latitude, 
                                                     Stop.stop_lat - .001400 <= latitude, 
@@ -87,9 +85,7 @@ def stop_info():
     if not user_id:
         return render_template("bus_detail_geo.html",stop_dict=stop_dict)
     else:
-
         user = User.query.filter_by(user_id=user_id).one()
-
         return render_template("bus_detail_geo.html",stop_dict=stop_dict, user=user,latitude=latitude, longitude=longitude )
     
 

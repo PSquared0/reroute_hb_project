@@ -11,7 +11,6 @@ import requests
 app = Flask(__name__)
 
 
-
 def get_bus_list():
     """Gets list of buses from database"""
 
