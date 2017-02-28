@@ -332,7 +332,6 @@ def user():
     user_ratings = Rating.query.filter_by(user_id=user_id).all()
     user = User.query.filter_by(user_id=user_id).one()
 
-
     
     return render_template("user.html", user=user, user_ratings=user_ratings)
 
