@@ -13,7 +13,7 @@ from sqlalchemy import func, desc
 
 app = Flask(__name__)
 
-app.secret_key = "ABC"
+app.secret_key = "d56f932859da1fb84bd072f5be866afc4bae33d59f3bfc72ddbe76625d841e72"
 
 app.jinja_env.undefined = StrictUndefined
 
@@ -27,7 +27,7 @@ def home():
 
     buses = reroute.get_bus_list()
     top_rated = db.session.query(Rating.bus_code).group_by(Rating.bus_code).order_by(desc(func.count(Rating.bus_code))).limit(10).all()
-    
+
 
 
 
@@ -58,8 +58,8 @@ def stop_info():
 
 
     bus_stop_id = [u.__dict__ for u in Stop.query.filter(
-                                                    Stop.stop_lat + .001400 >= latitude, 
-                                                    Stop.stop_lat - .001400 <= latitude, 
+                                                    Stop.stop_lat + .001400 >= latitude,
+                                                    Stop.stop_lat - .001400 <= latitude,
                                                     Stop.stop_lon + .001400 >= longitude ,
                                                     Stop.stop_lon - .001400 <= longitude).limit(3).all()]
 
@@ -70,13 +70,13 @@ def stop_info():
     urls = reroute.get_stop_info(info)
     xmls = reroute.send_api(urls)
 
-    
+
     stop_dict = reroute.get_bus_name_info(xmls)
     print stop_dict
 
     if reroute.get_bus_name_info(xmls) is None:
         stop_dict = "Looks like muni doesn't run in your area, move to SF if you can afford it"
-    else: 
+    else:
         stop_dict = reroute.get_bus_name_info(xmls)
 
 
@@ -87,22 +87,22 @@ def stop_info():
     else:
         user = User.query.filter_by(user_id=user_id).one()
         return render_template("bus_detail_geo.html",stop_dict=stop_dict, user=user,latitude=latitude, longitude=longitude )
-    
+
 
 
 
 @app.route('/bus_detail', methods=['GET'])
 def bus_lists():
     """Bus detail page. Allows users to submit rating if logged in"""
-    
+
 
     info = request.args.get('bus')
     bus_info = Bus.query.get(info)
 
     user_id = session.get("user_id")
-    
 
-    bus_dict = {'code': bus_info.bus_code, 
+
+    bus_dict = {'code': bus_info.bus_code,
                 'name': bus_info.bus_name,
                 'lname': bus_info.bus_lname,
                 'city': bus_info.city}
@@ -121,7 +121,7 @@ def bus_lists():
     comments =  db.session.query(Rating.comments, User.fname).filter_by(bus_code=rated_bus).join(User).all()
     fils =  db.session.query(Bus_filter.filter_code).filter_by(bus_code=rated_bus).all()
 
-      
+
     filters = []
     for fil in fils:
         n_filter = db.session.query(Filter.filter_name).filter_by(filter_code=fil).all()
@@ -168,7 +168,7 @@ def bus_lists():
 def register_form():
     """Show form for user signup."""
 
-    return render_template("sign_in_form.html") 
+    return render_template("sign_in_form.html")
 
 
 
@@ -183,7 +183,7 @@ def sign_up():
     lname = request.form["last_name"]
 
 
-    new_user = User(email=email, password=password, 
+    new_user = User(email=email, password=password,
                 fname=fname, lname=lname)
 
     db.session.add(new_user)
@@ -207,7 +207,7 @@ def login():
 def login_process():
     """Process login."""
 
-    
+
     email = request.form["email"]
     password = request.form["password"]
 
@@ -283,7 +283,7 @@ def rate_process():
 
     user_id = session.get("user_id")
     bus_dict = session.get('bus_dict')
-  
+
 
     rated_bus = bus_dict.get('name')
 
@@ -291,7 +291,7 @@ def rate_process():
 
     filters = request.form.getlist("filters")
 
-    
+
     comments = request.form["comments"]
     score = request.form["rating"]
 
@@ -326,13 +326,13 @@ def rate_process():
 def user():
     """Process login."""
 
-    
+
     user_id = session.get("user_id")
 
     user_ratings = Rating.query.filter_by(user_id=user_id).all()
     user = User.query.filter_by(user_id=user_id).one()
 
-    
+
     return render_template("user.html", user=user, user_ratings=user_ratings)
 
 
@@ -355,7 +355,7 @@ if __name__ == "__main__":
 
 
     ####################################
- 
+
     # app.debug = False
     # app.jinja_env.auto_reload = app.debug
 
@@ -365,6 +365,5 @@ if __name__ == "__main__":
     # DebugToolbarExtension(app)
 
 
-    
-    # app.run(port=5000, host="0.0.0.0")
 
+    # app.run(port=5000, host="0.0.0.0")
