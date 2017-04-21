@@ -79,7 +79,7 @@ class Bus_filter(db.Model):
                            backref=db.backref("bus_filters",
                                               order_by=bus_filter_id))
 
-   
+
     def __repr__(self):
         """info dispalyed when printed"""
         return '\n<Bus Filter ID: =%s User Id: =%s Bus Code: =%s Filter Code: =%s>' % (self.bus_filter_id, self.user_id, self.bus_code, self.filter_code)
@@ -92,7 +92,7 @@ class Filter(db.Model):
     filter_code = db.Column(db.String(5), primary_key=True)
     filter_name = db.Column(db.String(40))
 
-   
+
 
     def __repr__(self):
         """info dispalyed when printed"""
@@ -120,7 +120,7 @@ def connect_to_db(app, db_uri=None):
     """Connect the database to our Flask app."""
 
     # Configure to use our PstgreSQL database
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///reroute'
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
     app.config['SQLALCHEMY_ECHO'] = True
     db.app = app
     db.init_app(app)
