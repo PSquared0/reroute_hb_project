@@ -8,21 +8,21 @@
   <div class="row" id=top-scroll>
   <div style="position: relative; left: 0; top: 0;">
   <img src="/static/images/Artboard 1.svg" height=100% width=auto style="position: relative; top: 0; left: 0;"/>
- 
+
   </div>
   </div>
 </center>
 <center>
 <div class="cust-quotes">
   <blockquote data-timeout="5000"><p>The original Spanish name for San Francisco was Yerba Buena, meaning "good herb" or "good grass"</p></blockquote>
-  <blockquote data-timeout="5000"><p>In Star Trek, Star Fleet HQ is located just north of San Francisco.</p></blockquote>
-  <blockquote data-timeout="5000"><p>The gutters in Buena Vista Park are made from old tombstones from Lone Mountain Cemetery.</p></blockquote>
-  <blockquote data-timeout="5000"><p>San Francisco is built on 43 hills.</p></blockquote>
-  <blockquote data-timeout="5000"><p>The Golden Gate Bridge Isn’t Red.
+  <blockquote data-timeout="6000"><p>In Star Trek, Star Fleet HQ is located just north of San Francisco.</p></blockquote>
+  <blockquote data-timeout="7000"><p>The gutters in Buena Vista Park are made from old tombstones from Lone Mountain Cemetery.</p></blockquote>
+  <blockquote data-timeout="8000"><p>San Francisco is built on 43 hills.</p></blockquote>
+  <blockquote data-timeout="9000"><p>The Golden Gate Bridge Isn’t Red.
 The official paint color is “International Orange.”</p></blockquote>
-<blockquote data-timeout="5000"><p>San Francisco Official Instrument Is the Accordion.</p></blockquote>
-<blockquote data-timeout="5000"><p>The Model for the Bear on the State Flag Lived in Golden Gate Park.</p></blockquote>
-<blockquote data-timeout="5000"><p>BART used to be fun – the Powell Street Station was transformed into an arcade on December 1st, 1976.</p></blockquote>
+<blockquote data-timeout="10000"><p>San Francisco Official Instrument Is the Accordion.</p></blockquote>
+<blockquote data-timeout="11000"><p>The Model for the Bear on the State Flag Lived in Golden Gate Park.</p></blockquote>
+<blockquote data-timeout="12000"><p>BART used to be fun – the Powell Street Station was transformed into an arcade on December 1st, 1976.</p></blockquote>
 </div>
 </center>
 
@@ -46,7 +46,7 @@ The official paint color is “International Orange.”</p></blockquote>
 <div class="col-sm-"></div>
 </div>
 
-<br>  
+<br>
 
   <div class="row">
 <div class="col-sm-1"></div>
@@ -61,7 +61,7 @@ The official paint color is “International Orange.”</p></blockquote>
     {% endfor %}
     </select>
     <br><br>
-    <input type="submit" value="Select Bus" class="better-btn"> 
+    <input type="submit" value="Select Bus" class="better-btn">
     </form>
     </ul>
 </div>
@@ -134,12 +134,12 @@ function handlelocation(position) {
 
 console.log("hello")
  $('#geolocation').on('click', function (evt) {
-   
+
 });
 
 function getbusinfo(){
     console.log('Hi i am an alert')
-  
+
   var lat = 37.7749
     var long = -122.4194
     $("#result").load('/stop_info?lat=' + lat + '&long=' + long)
@@ -169,6 +169,6 @@ $('#top-scroll').on('click', function(){
 
 
 
-  
+
 
 {% endblock %}
