@@ -5,6 +5,7 @@ import os
 db = SQLAlchemy()
 
 
+
 #############################################################################
 # Model definitions
 
@@ -121,21 +122,22 @@ def connect_to_db(app, db_uri=None):
     """Connect the database to our Flask app."""
 
     # Configure to use our PstgreSQL database
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['DATABASE_URL']
+    # app.config['SQLALCHEMY_DATABASE_URI'] = db_uri or 'postgres:///reroute'
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL') or db_uri or 'postgres:///reroute'
     app.config['SQLALCHEMY_ECHO'] = True
     db.app = app
     db.init_app(app)
 
 
-if __name__ == "__main__":
-    # As a convenience, if we run this module interactively, it will leave
-    # you in a state of being able to work with the database directly.
-
-    # from server import app
-    # connect_to_db(app)
-    # print "Connected to DB."
-
-    def connect_to_db(app, db_uri=None):
-        """Connect our application to our database."""
-
-    app.config['SQLALCHEMY_DATABASE_URI'] = db_uri or 'postgres:///reroute'
+# if __name__ == "__main__":
+#     # As a convenience, if we run this module interactively, it will leave
+#     # you in a state of being able to work with the database directly.
+#
+#     # from server import app
+#     # connect_to_db(app)
+#     # print "Connected to DB."
+#
+#     # def connect_to_db(app, db_uri=None):
+#     #     """Connect our application to our database."""
+#     #
+#     # app.config['SQLALCHEMY_DATABASE_URI'] = db_uri or 'postgres:///reroute'

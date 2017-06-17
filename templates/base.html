@@ -34,7 +34,7 @@
           <a class="button-name" href="/user" role="button"> {{ user.fname|capitalize }} </a>
           {% else %}
           <button type="button" class="button"  data-toggle="modal" data-target="#myModal1">Log In</a>
-          
+
 
           {% endif %}
           </div>
@@ -49,8 +49,8 @@
   {{ flash }}
 {% endfor %}
 
-{% block content %} 
-  put your content here 
+{% block content %}
+  put your content here
 {% endblock %}
 
 <!-- SIGN UP -->
@@ -104,10 +104,10 @@
         <h1>log in</h1>
         <input name="email" type="email" placeholder="Enter your email" required="required" class="input pass"/>
         <input name="password" type="password" placeholder="enter your password" required="required" class="input pass"/><br><br>
-    
+
         <input type="submit" value="LOG ME IN" class="inputButton"/><br><br>
         <div class="text-center">
-            need an account? <a href="/rloh" id="registers">signup</a>
+            need an account? <a href="#myModal" id="registers">signup</a>
         </div> <br>
       </form>
     </div>
