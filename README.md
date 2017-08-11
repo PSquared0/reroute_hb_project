@@ -9,7 +9,7 @@ As an avid non driver, the developer has amassed a lot of information about what
 ## Features
 
 
-- Locates nearest but stops
+- Locates nearest bus stops
 - Provides bus arrival times
 - Provides user created ratings for bus lines
 
