@@ -1,71 +1,79 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 
 
 
 <center>
 
   <div class="row" id=top-scroll>
-  <div style="position: relative; left: 0; top: 0;">
-  <img src="/static/images/Artboard 1.svg" height=100% width=auto style="position: relative; top: 0; left: 0;"/>
+    <div style="position: relative; left: 0; top: 0;">
+      <img src="/static/images/Artboard 1.svg" height=100% width=auto style="position: relative; top: 0; left: 0;" />
 
-  </div>
+    </div>
   </div>
 </center>
 <center>
-<div class="cust-quotes">
-  <blockquote data-timeout="5000"><p>The original Spanish name for San Francisco was Yerba Buena, meaning "good herb" or "good grass"</p></blockquote>
-  <blockquote data-timeout="6000"><p>In Star Trek, Star Fleet HQ is located just north of San Francisco.</p></blockquote>
-  <blockquote data-timeout="7000"><p>The gutters in Buena Vista Park are made from old tombstones from Lone Mountain Cemetery.</p></blockquote>
-  <blockquote data-timeout="8000"><p>San Francisco is built on 43 hills.</p></blockquote>
-  <blockquote data-timeout="9000"><p>The Golden Gate Bridge Isn’t Red.
-The official paint color is “International Orange.”</p></blockquote>
-<blockquote data-timeout="10000"><p>San Francisco Official Instrument Is the Accordion.</p></blockquote>
-<blockquote data-timeout="11000"><p>The Model for the Bear on the State Flag Lived in Golden Gate Park.</p></blockquote>
-<blockquote data-timeout="12000"><p>BART used to be fun – the Powell Street Station was transformed into an arcade on December 1st, 1976.</p></blockquote>
-</div>
+  <div class="cust-quotes">
+    <blockquote data-timeout="5000">
+      <p>Austin was originally named Waterloo</p>
+    </blockquote>
+    <blockquote data-timeout="6000">
+      <p>Singer Janis Joplin got her start in Austin at Threadgill’s</p>
+    </blockquote>
+    <blockquote data-timeout="7000">
+      <p>TSince 1963, Austin has celebrated the birthday of Eeyore</p>
+    </blockquote>
+    <blockquote data-timeout="8000">
+      <p>. Austin has its own personal Bigfoot. His name is Hairy Man, and he, of course, lives on Hairy Man Road</p>
+    </blockquote>
+    <blockquote data-timeout="9000">
+      <p>Austin is the largest U.S. City without stock in a professional sports team</p>
+    </blockquote>
+    <blockquote data-timeout="10000">
+      <p>Austin boasts the highest annual bookstore sales in the U.S. at $195 per household</p>
+    </blockquote>
+    <blockquote data-timeout="11000">
+      <p>Austin is home to about 750,000 bats in spring and summer and up to 1.5 million at the peak of bat-watching season</p>
+    </blockquote>
+    <blockquote data-timeout="12000">
+      <p>There are hundreds of wild Monk Parakeets flying freely around Austin</p>
+    </blockquote>
+  </div>
 </center>
 
-
-<center> <div id="weather"></div></div></center>
-
-<button class="js-geolocation" style="display: none;">Use Your Location</button>
+<div id="weather"></div>
 
 <div class="row">
-<div class="col-sm-1"></div>
-<div class="col-sm-10">
-<div class="margins"
-<p id="pageheader">top rated</p>
-{% for tops in top_rated %}
+  <div class="col-sm-1"></div>
+  <div class="col-sm-10">
+    <div class="margins" <p id="pageheader">top rated</p>
+      {% for tops in top_rated %}
 
-<a href="/bus_detail?bus={{ tops[0] }}" class="btn btn-success btn-circle btn-xl">{{ tops[0] }}</a>
-
-  {% endfor %}
-</div>
-</div>
-<div class="col-sm-"></div>
+      <a href="/bus_detail?bus={{ tops[0] }}" class="btn btn-success btn-circle btn-xl">{{ tops[0] }}</a> {% endfor %}
+    </div>
+  </div>
+  <div class="col-sm-"></div>
 </div>
 
 <br>
 
-  <div class="row">
-<div class="col-sm-1"></div>
-<div class="col-sm-10">
-<div id="bus_pick">
-  <h3 id="pageheader" class="dropdown">pick a bus line</h3><br>
-    <ul class="dropdown-style">
-    <form action='/bus_detail', method="get">
-    <select class="dropdown-style" name="bus">
+<div class="row">
+  <div class="col-sm-1"></div>
+  <div class="col-sm-10">
+    <div id="bus_pick">
+      <h3 id="pageheader" class="dropdown">pick a bus line</h3><br>
+      <ul class="dropdown-style">
+        <form action='/bus_detail' , method="get">
+          <select class="dropdown-style" name="bus">
     {% for bus in buses %}
     <option  class="dropdown-content"value="{{ bus.bus_name }}">{{ bus.bus_name }}</option>
     {% endfor %}
     </select>
-    <br><br>
-    <input type="submit" value="Select Bus" class="better-btn">
-    </form>
-    </ul>
-</div>
-</div>
+          <br><br>
+          <input type="submit" value="Select Bus" class="better-btn">
+        </form>
+      </ul>
+    </div>
+  </div>
 </div>
 <div class="col-sm-"></div>
 </div>
@@ -82,73 +90,73 @@ The official paint color is “International Orange.”</p></blockquote>
     <input type="hidden" name="datatosendback" id="datatosendback">
   </div>
 </form>
-<div class="row">
-<div class="col-sm-1"></div>
-<div class="col-sm-10"
-  <p id="pageheader">Nearby Stops</p>
-  <br>
+<!-- <div class="row">
+  <div class="col-sm-1"></div>
+  <div class="col-sm-10">
+
+  </div> <p id="pageheader"> Nearby Stops</p>
+    <br>
 
 
-  <span id=result></span>
-</div>
+    <span id=result></span>
+  </div>
 </div>
 <div class="col-sm-"></div>
 </div>
 
 
 <div class="row">
-<div class="col-sm-1"></div>
-<div class="col-sm-10"
-<div id="geolocation">
-<button onclick="showlocation()">use my location</button>
-<div id="myProgress">
-  <div id="myBar"></div>
+  <div class="col-sm-1"></div>
+  <div class="col-sm-10">
+    <div id="geolocation">
+      <button onclick="showlocation()">use my location</button>
+      <div id="myProgress">
+        <div id="myBar"></div>
+      </div>
+    </div>
+  </div>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="col-sm-"></div>
-</div>
-
+<div class="col-sm-"></div> -->
 
 
 <script type="text/javascript">
+  // var lat = null
+  // var long = null
+  //
+  // function showlocation() {
+  //   // One-shot position request.
+  //   console.log('clicked');
+  //   navigator.geolocation.getCurrentPosition(handlelocation);
+  // }
+  //
+  //
+  // console.log("hi")
+  // $('#geolocation').on('click', function(evt) {
+  //
+  // });
+  //
+  // function handlelocation(position) {
+  //   lat = position.coords.latitude;
+  //   long = position.coords.longitude
+  //   console.log(lat, long);
+  //   $("#result").load('/stop_info?lat=' + lat + '&long=' + long)
+  // }
 
-
-var lat = null
-var long = null
-
-function showlocation() {
-   // One-shot position request.
-   console.log('clicked');
-   navigator.geolocation.getCurrentPosition(handlelocation);
-}
-
-function handlelocation(position) {
-   lat = position.coords.latitude;
-   long = position.coords.longitude
-   console.log(lat, long);
-   $("#result").load('/stop_info?lat=' + lat + '&long=' + long)
-}
-
-console.log("hello")
- $('#geolocation').on('click', function (evt) {
-
-});
-
-function getbusinfo(){
+  function getbusinfo() {
     console.log('Hi i am an alert')
 
-  var lat = 37.7749
+    var lat = 37.7749
     var long = -122.4194
     $("#result").load('/stop_info?lat=' + lat + '&long=' + long)
 
-}
+  }
 
-$('#top-scroll').on('click', function(){
-  $('html,body').animate({scrollTop: 0}, 1000,'swing');
-});
+  $('#top-scroll').on('click', function() {
+    $('html,body').animate({
+      scrollTop: 0
+    }, 1000, 'swing');
+  });
+
 
 </script>
 
@@ -158,7 +166,7 @@ $('#top-scroll').on('click', function(){
 
 <span id=result></span>
 
-  </div>
+</div>
 
 
 
