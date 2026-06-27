@@ -5,6 +5,7 @@ from jinja2 import StrictUndefined
 
 from flask import Flask, jsonify, render_template, redirect, request, flash, session
 from flask_debugtoolbar import DebugToolbarExtension
+from werkzeug.security import generate_password_hash, check_password_hash
 
 from model import Stop, Bus, Rating, User, Bus_filter, Filter, connect_to_db, db
 from math import acos, cos, radians
@@ -34,8 +35,8 @@ def home():
 
         user = User.query.filter_by(user_id=user_id).one()
 
-        print "xxxxx"
-        print top_rated
+        print ("xxxxx")
+        print (top_rated)
 
         return render_template("homepage.html",
                                buses=buses, user=user, top_rated=top_rated)
@@ -61,12 +62,8 @@ def stop_info():
 
     stop_dict = reroute.get_bus_name_info(xmls)
 
-    print stop_dict
-
-    if reroute.get_bus_name_info(xmls) is None:
-        stop_dict = "Looks like muni doesn't run in your area, move to SF if you can afford it."
-    else:
-        stop_dict = reroute.get_bus_name_info(xmls)
+    if stop_dict is None:
+        stop_dict = "No live arrival data available for this stop right now."
 
     user_id = session.get("user_id")
 
@@ -109,7 +106,7 @@ def bus_lists():
     filters = []
     for fil in fils:
         n_filter = db.session.query(
-            Filter.filter_name).filter_by(filter_code=fil).all()
+            Filter.filter_name).filter_by(filter_code=fil.filter_code).all()
         filters.append(n_filter)
 
     score_count = Rating.query.filter_by(
@@ -162,7 +159,15 @@ def sign_up():
     fname = request.form["first_name"]
     lname = request.form["last_name"]
 
-    new_user = User(email=email, password=password,
+    if password != password2:
+        flash("Passwords don't match.")
+        return redirect("/register")
+
+    if User.query.filter_by(email=email).first():
+        flash("An account with that email already exists.")
+        return redirect("/register")
+
+    new_user = User(email=email, password=generate_password_hash(password),
                     fname=fname, lname=lname)
 
     db.session.add(new_user)
@@ -193,7 +198,7 @@ def login_process():
         flash("No such user")
         return redirect("/register")
 
-    if user.password != password:
+    if not check_password_hash(user.password, password):
         flash("Incorrect password")
         return redirect("/login")
 
@@ -208,7 +213,7 @@ def login_process():
 def logout_process():
     """Log out"""
 
-    del session["user_id"]
+    session.pop("user_id", None)
     flash("Logged Out.")
     return redirect("/")
 
@@ -224,13 +229,10 @@ def rate():
     if user_id:
         user_rating = Rating.query.filter_by(
             bus_code=rated_bus, user_id=user_id).first()
-
+        user = User.query.filter_by(user_id=user_id).one()
     else:
         user_rating = None
-
-    user = User.query.filter_by(user_id=user_id).one()
-
-    user_id = session.get("user_id")
+        user = None
 
     score = session.get("score")
 
@@ -260,27 +262,25 @@ def rate_process():
     comments = request.form["comments"]
     score = request.form["rating"]
 
-    comment_info = Rating(comments=comments, rating=score,
-                          user_id=user_id, bus_code=rated_bus)
+    existing_rating = Rating.query.filter_by(
+        bus_code=rated_bus, user_id=user_id).first()
+
+    if existing_rating:
+        existing_rating.comments = comments
+        existing_rating.rating = score
+        flash("Rating updated.")
+    else:
+        db.session.add(Rating(comments=comments, rating=score,
+                              user_id=user_id, bus_code=rated_bus))
+        flash("Rating added.")
 
     for item in filters:
         bus_filter = Bus_filter(
             filter_code=item, user_id=user_id, bus_code=rated_bus)
         db.session.add(bus_filter)
 
-    user = User.query.filter_by(user_id=user_id).one()
-
-    if score:
-        score != None
-        flash("Rating updated.")
-
-    else:
-        rating = comment_info
-        flash("Rating added.")
-
     session["score"] = score
 
-    db.session.add(comment_info)
     db.session.commit()
 
     return redirect("/bus_detail" + "?bus=" + rated_bus)

@@ -1,12 +1,16 @@
 """ Reroute Project Tracker
-A front-end for a databse that works with the ReRoute database
+A front-end that works with the ReRoute database
 """
+
+import json
+import os
 
 from flask import Flask,request
 from model import Bus, Rating, User, Bus_filter, Stop, Filter, db, connect_to_db
-from bs4 import BeautifulSoup
 import requests
 
+FIVE_ELEVEN_API_KEY = os.environ.get("FIVE_ELEVEN_API_KEY")
+FIVE_ELEVEN_STOP_MONITORING_URL = "http://api.511.org/transit/StopMonitoring"
 
 app = Flask(__name__)
 
@@ -16,7 +20,7 @@ def get_bus_list():
 
     buses = db.session.query(Bus.bus_name).all()
 
-    return buses 
+    return buses
 
 def get_bus_details():
     """Shows ratings for bus"""
@@ -34,82 +38,86 @@ def get_stop_ids(bus_stop_id):
     return results
 
 def get_stop_info(info):
-    """Shows info per bus stop"""
-    api_url = 'http://webservices.nextbus.com/service/publicXMLFeed?command=predictions&a=sf-muni&stopId='
-    
+    """Builds 511.org StopMonitoring request URLs, one per nearby stop"""
+
     urls = []
     for stop_id in info:
-        url = api_url + str(stop_id)
-        urls.append(url)
+        params = {
+            "api_key": FIVE_ELEVEN_API_KEY,
+            "agency": "SF",
+            "stopcode": stop_id,
+            "format": "json",
+        }
+        urls.append((FIVE_ELEVEN_STOP_MONITORING_URL, params))
     return urls
 
 
 
 def send_api(urls):
-    xmls = []
-    for url in urls:
-        response = requests.get(url)
-        unparsed_xml = response.text
-        xml = BeautifulSoup(unparsed_xml, 'xml')
-        xmls.append(xml)
+    """Fetches StopMonitoring JSON for each (url, params) pair"""
 
-    return xmls
+    payloads = []
+    for url, params in urls:
+        try:
+            response = requests.get(url, params=params, timeout=5)
+            response.raise_for_status()
+            data = json.loads(response.content.decode("utf-8-sig"))
+        except (requests.RequestException, ValueError):
+            continue
+        payloads.append(data)
+
+    return payloads
 
 
 
-def get_bus_name_info(xmls):
+def get_bus_name_info(payloads):
+    """Turns 511.org StopMonitoring payloads into a template-friendly dict"""
 
+    visits = []
+    for payload in payloads:
+        delivery = payload.get("ServiceDelivery", {}).get("StopMonitoringDelivery", {})
+        visits.extend(delivery.get("MonitoredStopVisit") or [])
+
+    if not visits:
+        return None
 
     stop_dict = {}
 
-    for xml in xmls:
+    for visit in visits:
+        journey = visit.get("MonitoredVehicleJourney", {})
+        call = journey.get("MonitoredCall", {})
 
-        xml_infos = xml.find_all('predictions')
-        for xml_info in xml_infos:
-            bus_dir = ''
-            bus_mins =''
-            if xml.predictions.direction is None:
-                bus_dir = xml.predictions['dirTitleBecauseNoPredictions']
-                bus_mins = '10025600'
-            else:
-                bus_dir = xml.predictions.direction['title']
-                bus_mins = xml.predictions.prediction['minutes']
+        route_num = journey.get("LineRef", "")
+        bus_dir = journey.get("DestinationName", "")
+        r_name = "%s  %s" % (route_num, bus_dir)
 
+        eta = call.get("ExpectedArrivalTime") or call.get("AimedArrivalTime")
+        bus_mins = get_minutes_until(eta)
 
-            r_name = xml_info['routeTag'] + '  ' + bus_dir
-            # d_name = xml.predictions.direction['title']
-            # info = xml_info['routeTag']
-
-            stop_dict[r_name] = {}
-
-
-            stop_dict[r_name]['dir'] = bus_dir,
-            stop_dict[r_name]['name'] = xml_info['routeTitle'],
-            stop_dict[r_name]['num'] = xml_info['routeTag'],
-            stop_dict[r_name]['stop'] = xml_info['stopTitle'],
-            stop_dict[r_name]['mins'] = bus_mins
+        stop_dict[r_name] = {
+            "dir": (bus_dir,),
+            "name": (journey.get("PublishedLineName", ""),),
+            "num": (route_num,),
+            "stop": (call.get("StopPointName", ""),),
+            "mins": bus_mins,
+        }
 
     return stop_dict
 
-def get_bus_stops(xml):
 
-    xml_infos = xml.find_all('predictions')
+def get_minutes_until(iso_timestamp):
+    """Minutes between now and an ISO-8601 UTC timestamp from the 511 API"""
 
+    if not iso_timestamp:
+        return "?"
 
-    for xml_info in xml_infos:
-        stop_info = xml_info['stopTitle']
+    from datetime import datetime, timezone
 
-    return stop_info
+    arrival = datetime.strptime(iso_timestamp, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
+    now = datetime.now(timezone.utc)
+    minutes = int((arrival - now).total_seconds() // 60)
 
-def get_bus_mins(xml):
-
-    mins_xml_infos = xml.predictions.prediction['minutes']
-
-
-    for mins_xml_info in mins_xml_infos:
-        return mins_xml_info
-
-    return mins_xml_info
+    return str(max(minutes, 0))
 
 def get_rating_sum(result_score):
 
@@ -128,7 +136,7 @@ def get_rating_sum(result_score):
 
 
 if __name__ == "__main__":
-    
+
     connect_to_db(app)
 
     # closing our database connection

@@ -53,7 +53,7 @@ class User(db.Model):
 
     user_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     email = db.Column(db.String(64), nullable=True)
-    password = db.Column(db.String(64), nullable=True)
+    password = db.Column(db.String(255), nullable=True)
     fname = db.Column(db.String(64), nullable=True)
     lname = db.Column(db.String(64), nullable=True)
 
@@ -123,8 +123,8 @@ def connect_to_db(app, db_uri=None):
 
     # Configure to use our PstgreSQL database
     # app.config['SQLALCHEMY_DATABASE_URI'] = db_uri or 'postgres:///reroute'
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False 
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL') or db_uri or 'postgres:///reroute'
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL') or db_uri or 'postgresql:///reroute'
     app.config['SQLALCHEMY_ECHO'] = True
     db.app = app
     db.init_app(app)

@@ -1,8 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
 
-
-{% for key, value in stop_dict.iteritems() %}
+{% if stop_dict is string %}
+<div class="container">
+    <p>{{ stop_dict }}</p>
+</div>
+{% else %}
+{% for key, value in stop_dict.items() %}
     <section id="pricing-table">
             <div class="container">
                 <div class="row">
@@ -24,5 +28,6 @@
                         </div>
         </section>
 {% endfor %}
+{% endif %}
 
 {% endblock %}
