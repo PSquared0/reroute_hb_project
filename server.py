@@ -15,9 +15,11 @@ from sqlalchemy import func, desc
 
 app = Flask(__name__)
 
-app.secret_key = "ABC"
+app.secret_key = os.environ.get("SECRET_KEY", "ABC")
 
 app.jinja_env.undefined = StrictUndefined
+
+connect_to_db(app, os.environ.get("DATABASE_URL"))
 
 
 @app.route('/')
@@ -299,13 +301,6 @@ def user():
 
 
 if __name__ == "__main__":
-
-    connect_to_db(app, os.environ.get("DATABASE_URL"))
-
-    # Create the tables we need from our models (if they already
-    # exist, nothing will happen here, so it's fine to do this each
-    # time on startup)
-    # db.create_all(app=app)
 
     DEBUG = "NO_DEBUG" not in os.environ
     PORT = int(os.environ.get("PORT", 5000))

@@ -121,11 +121,16 @@ class Stop(db.Model):
 def connect_to_db(app, db_uri=None):
     """Connect the database to our Flask app."""
 
-    # Configure to use our PstgreSQL database
-    # app.config['SQLALCHEMY_DATABASE_URI'] = db_uri or 'postgres:///reroute'
+    db_uri = os.environ.get('DATABASE_URL') or db_uri or 'postgresql:///reroute'
+
+    # Render (and Heroku) hand out the legacy "postgres://" scheme, which
+    # SQLAlchemy 2.0 no longer accepts.
+    if db_uri.startswith('postgres://'):
+        db_uri = db_uri.replace('postgres://', 'postgresql://', 1)
+
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL') or db_uri or 'postgresql:///reroute'
-    app.config['SQLALCHEMY_ECHO'] = True
+    app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
+    app.config['SQLALCHEMY_ECHO'] = "NO_DEBUG" not in os.environ
     db.app = app
     db.init_app(app)
 
