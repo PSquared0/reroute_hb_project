@@ -1,24 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="rr-card">
-  <div class="row">
-    <div id="ratedBus" class="col-md-5">
+<div class="rr-card rr-bus-summary">
+  <div id="ratedBus">
 
-      <h1 class="ratings"> {{ info.bus_name }}</h1>
-      <h1 class="ratingserif"> {{ info.bus_lname }}</h1>
+    <h1 class="ratings"> {{ info.bus_name }}</h1>
+    <h1 class="ratingserif"> {{ info.bus_lname }}</h1>
 
-      <p class="ratingserif1"> bus rating </p>
+    <p class="ratingserif1"> bus rating </p>
 
-      <h3 class="ratings1"> {{ average }}</h3>
+    <h3 class="ratings1"> {{ average }}</h3>
 
-      {% if "user_id" in session %}
-       <a id="average" href="/ratings">rate this bus &rarr;</a>
-      {% endif %}
+    {% if "user_id" in session %}
+     <a id="average" href="/ratings">rate this bus &rarr;</a>
+    {% endif %}
 
-    </div>
+  </div>
 
-    <canvas class="col-md-7" id="chart"></canvas>
+  <div class="rr-chart-wrap">
+    <canvas id="chart"></canvas>
   </div>
 </div>
 
@@ -77,7 +77,7 @@ var data = {
 
 new Chart("chart",{
     type:"doughnut",
-    maintainAspectRatio: true,
+    maintainAspectRatio: false,
     responsive: true,
     data: data,
     animation:{

@@ -435,10 +435,34 @@ select, .dropdown-style select {
   font-size: 32px;
 }
 
-canvas {
-  max-width: 320px;
-  margin: 16px auto;
-  display: block;
+.rr-bus-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.rr-bus-summary #ratedBus {
+  flex: 1 1 260px;
+  text-align: left;
+}
+
+.rr-chart-wrap {
+  position: relative;
+  flex: 0 0 220px;
+  width: 220px;
+  height: 220px;
+}
+
+.rr-chart-wrap canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+@media (max-width: 600px) {
+  .rr-bus-summary { justify-content: center; text-align: center; }
+  .rr-bus-summary #ratedBus { text-align: center; }
 }
 
 /* ---------- Comments / talk bubbles ---------- */
