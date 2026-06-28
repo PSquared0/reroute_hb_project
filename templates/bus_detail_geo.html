@@ -2,8 +2,8 @@
 {% block content %}
 
 {% if stop_dict is string %}
-<div class="container">
-    <p>{{ stop_dict }}</p>
+<div class="rr-card" style="text-align: center;">
+    <p>{{ stop_dict }} 🍦</p>
 </div>
 {% else %}
 {% for key, value in stop_dict.items() %}

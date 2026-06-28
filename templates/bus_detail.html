@@ -1,29 +1,25 @@
 {% extends 'base.html' %}
 {% block content %}
 
+<div class="rr-card">
+  <div class="row">
+    <div id="ratedBus" class="col-md-5">
 
+      <h1 class="ratings"> {{ info.bus_name }}</h1>
+      <h1 class="ratingserif"> {{ info.bus_lname }}</h1>
 
-<div class="row">
-<div id="ratedBus"  class="col-md-5" >
+      <p class="ratingserif1"> bus rating </p>
 
-<h1 class="ratings"> {{ info.bus_name }}</h1>
-<h1 class="ratingserif"> {{ info.bus_lname }}</h1>
+      <h3 class="ratings1"> {{ average }}</h3>
 
-<p class="ratingserif1"> BUS RATING </p> 
+      {% if "user_id" in session %}
+       <a id="average" href="/ratings">rate this bus &rarr;</a>
+      {% endif %}
 
-<h3 class="ratings1"> {{ average }}</h3> 
+    </div>
 
-{% if "user_id" in session %}
- <a id="average" href="/ratings">Rate this Bus</a>
-{% endif %}
-
-</div>
-
-
-<!-- <div class="chartborder"> -->
-<canvas class="col-md-7" id="chart"></canvas>
-<!-- </div>
- -->
+    <canvas class="col-md-7" id="chart"></canvas>
+  </div>
 </div>
 
 
@@ -92,28 +88,16 @@ new Chart("chart",{
 
 </script>
 
-<p class="ratingserif2"> COMMENTS ABOUT THE {{ info.bus_name }}</p><br>
-<div class="container">
-<ul>
- <div class="row">
-<div class="col-sm-1"></div>
-<div class="col-sm-10">
-
-{% for comment in comments %}
-  <div class="talk-bubble tri-right  border round btm-left-in">
-  <div class="talktext">
-    <li class="commenter"> {{ comment[0] }}</li>
+<div class="rr-card" style="text-align: center;">
+  <p class="ratingserif2">what folks are saying about the {{ info.bus_name }}</p>
+  <div class="container">
+    {% for comment in comments %}
+    <div class="talk-bubble">
+      <div class="talktext">{{ comment[0] }}</div>
     </div>
-    </div>
-    <div ><b class=comment-name> {{ comment[1]|capitalize }}</b>
-    </div>
-{% endfor %}
-</ul>
- </div>
-
- </div>
-</div>
-<div class="col-sm-"></div>
+    <div><b class="comment-name">{{ comment[1]|capitalize }}</b></div>
+    {% endfor %}
+  </div>
 </div>
 
 {% endblock %}

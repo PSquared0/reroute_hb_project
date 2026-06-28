@@ -1,86 +1,19 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="sign_up" style="width:40%;">
-<h1>Register</h1>
 
-<form action="/register" method="POST">
+<div class="rr-card" style="max-width: 420px; margin: 40px auto;">
+  <h1 class="rr-modal-title">join the scoop squad 🍨</h1>
 
-    <div class="form-group">
-        <label>
-            Email
-            <input type="email" name="email" class="form-info">
-        </label>
-    </div>
+  <form action="/register" method="POST">
+    <input type="text" name="first_name" placeholder="first name" required class="rr-input">
+    <input type="text" name="last_name" placeholder="last name" required class="rr-input">
+    <input type="email" name="email" placeholder="email" required class="rr-input">
+    <input type="password" name="password" placeholder="choose a password" required class="rr-input">
+    <input type="password" name="password2" placeholder="confirm password" required class="rr-input">
+    <input type="submit" value="sign me up!" class="rr-btn rr-btn-block">
+  </form>
 
-    <div class="form-group">
-        <label>
-            Password
-            <input type="password" name="password" class="form-info">
-        </label>
-    </div>
-
-    <div class="form-group">
-        <label>
-            Confirm Password
-            <input type="password" name="password2" class="form-info">
-        </label>
-    </div>
-
-    <div class="form-group">
-        <label>
-            First Name
-            <input type="text" name="first_name" class="form-info">
-        </label>
-    </div>
-
-    <div class="form-group">
-        <label>
-            Last Name
-            <input type="text" name="last_name" class="form-info">
-        </label>
-    </div>
-
-    <div class="form-group">
-        <input type="submit" value="register" class="btn">
-    </div>
-
-</form>
+  <p class="rr-modal-footnote">already have an account? <a href="/login">log in</a></p>
 </div>
-
-
-<div id="myModal" class="modal fade" tabindex="-1" role="dialog">
-
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        <p>One fine body&hellip;</p>
-      </div>
-      <div class="container">
-    <div class="col-md-6">
-    <div id="logbox">
-      <form id="signup" action="/register" method="POST">>
-        <h1>create an account</h1>
-        <input name="first_name"" type="text" placeholder="What's your first name?" pattern="^[\w]{3,16}$" autofocus="autofocus" required="required" class="input pass"/>
-        <input name="last_name"" type="text" placeholder="What's your last name?" pattern="^[\w]{3,16}$" autofocus="autofocus" required="required" class="input pass"/>
-        <input name="password" type="password" placeholder="choose a password" required="required" class="input pass"/>
-        <input name="password2" type="password" placeholder="Confirm password" required="required" class="input pass"/>
-        <input type="email" name="email" placeholder="Email address" class="input pass"/>
-        <input type="submit" value="Sign me up!" class="inputButton"/>
-        <div class="text-center">
-            already have an account? <a href="/login" id="login_id">login</a>
-        </div>
-      </form>
-    </div>
-   </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
-
-
 
 {% endblock %}

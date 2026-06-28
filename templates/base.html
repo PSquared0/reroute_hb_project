@@ -2,125 +2,101 @@
 <html>
 
 <head>
-  <title>ReRoute</title>
-  <script src="https://code.jquery.com/jquery.js"></script>
-  <script src="static/main.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ReRoute &mdash; rate your ride</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="static/styles.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src=https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.js></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBRYpUcqUv7n-QHHIrrrkvxLqZuMZYIvM4&callback=initMap"
-    type="text/javascript"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.js"></script>
+  <script src="static/main.js"></script>
 </head>
 
-<header role="banner" class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container_bar">
-    <div class="navbar-header">
-      <button data-toggle="collapse-side" data-target=".side-collapse" data-target-2=".side-collapse-container" type="button" class="navbar-toggle pull-left"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-    </div>
-    <div class="navbar-inverse side-collapse in">
-      <nav role="navigation" class="navbar-collapse">
-        <ul class="nav navbar-nav" <div id=base_buttons>
-          <a class="button" href="/" role="button">Home</a> {% if "user_id" not in session %}
-          <button type="button" class="button" data-toggle="modal" data-target="#myModal">Register</button> {% endif %} {% if "user_id" in session %}
-          <a class="button" href="/logout" role="button">Log Out</a>
-          <a class="button-name" href="/user" role="button"> {{ user.fname|capitalize }} </a> {% else %}
-          <button type="button" class="button" data-toggle="modal" data-target="#myModal1">Log In</a>
+<body>
 
+  <header class="rr-navbar">
+    <div class="rr-navbar-inner">
+      <a href="/" class="rr-logo">🚌 ReRoute<span class="rr-logo-dot">.</span></a>
 
-          {% endif %}
-          </div>
-        </ul>
+      <nav class="rr-nav-links">
+        <a href="/" class="rr-pill">home</a>
+        {% if "user_id" not in session %}
+          <button type="button" class="rr-pill" data-toggle="modal" data-target="#myModal1">log in</button>
+          <button type="button" class="rr-pill rr-pill-solid" data-toggle="modal" data-target="#myModal">sign up</button>
+        {% else %}
+          <a href="/user" class="rr-pill">hi, {{ user.fname|capitalize }} 👋</a>
+          <a href="/logout" class="rr-pill rr-pill-solid">log out</a>
+        {% endif %}
       </nav>
     </div>
+  </header>
+
+  <div class="rr-flash-wrap">
+    {% for flash in get_flashed_messages() %}
+      <div class="rr-flash">{{ flash }}</div>
+    {% endfor %}
   </div>
-</header>
 
+  <main class="rr-main">
+    {% block content %}
+    put your content here
+    {% endblock %}
+  </main>
 
-{% for flash in get_flashed_messages() %}
-  {{ flash }}
-{% endfor %}
+  <footer class="rr-footer">
+    made with 🍦 in San Francisco
+  </footer>
 
-{% block content %}
-  put your content here
-{% endblock %}
-
-<!-- SIGN UP -->
-
-<div id="myModal" class="modal fade" tabindex="-1" role="dialog">
-
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    </div>
-    <div class="container">
-      <div class="modal-footer">
-        <div class="col-md-6">
-          <div id="logbox" class="text-center">
-            <form id="signup" action="/register" method="POST">
-              <h1>create an account</h1>
-              <input name="first_name" " type="text " placeholder="first name? "  autofocus="autofocus " required="required " class="input pass "/>
-        <input name="last_name "" type="text" placeholder="last name?" pattern="^[\w]{3,16}$" autofocus="autofocus" required="required" class="input pass" />
-              <input type="email" name="email" placeholder="email" class="input pass" />
-              <input name="password" type="password" placeholder="choose a password" required="required" class="input pass" />
-              <input name="password2" type="password" placeholder="confirm password" required="required" class="input pass" /><br><br>
-              <input type="submit" value="SIGN ME UP" class="inputButton" /><br><br>
-              <div class="text-center">
-                already have an account? <a href="/login" id="login_id">login</a>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- /.modal-content -->
-  </div>
-  <!-- /.modal-dialog -->
-  </div>
-  <!-- /.modal -->
-  </div>
-  <!-- SIGN UP -->
-
-  <!-- LOG IN -->
-
-
-  <div id="myModal1" class="modal fade" tabindex="-1" role="dialog">
-
+  <!-- SIGN UP MODAL -->
+  <div id="myModal" class="modal fade rr-modal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         </div>
-        <div class="container">
-          <div class="col-md-6">
-            <div id="logbox1">
-              <form id="login" action="/login" method="POST">
-                <h1>log in</h1>
-                <input name="email" type="email" placeholder="Enter your email" required="required" class="input pass" />
-                <input name="password" type="password" placeholder="enter your password" required="required" class="input pass" /><br><br>
-
-                <input type="submit" value="LOG ME IN" class="inputButton" /><br><br>
-                <div class="text-center">
-                  need an account? <a href="#myModal" id="registers">signup</a>
-                </div> <br>
-              </form>
-            </div>
-          </div>
+        <div class="rr-modal-body">
+          <form id="signup" action="/register" method="POST">
+            <h1 class="rr-modal-title">join the scoop squad 🍨</h1>
+            <input name="first_name" type="text" placeholder="first name" autofocus required class="rr-input" />
+            <input name="last_name" type="text" placeholder="last name" required class="rr-input" />
+            <input type="email" name="email" placeholder="email" required class="rr-input" />
+            <input name="password" type="password" placeholder="choose a password" required class="rr-input" />
+            <input name="password2" type="password" placeholder="confirm password" required class="rr-input" />
+            <input type="submit" value="sign me up!" class="rr-btn rr-btn-block" />
+            <p class="rr-modal-footnote">
+              already have an account? <a href="#myModal1" data-toggle="modal" data-target="#myModal1" id="login_id">log in</a>
+            </p>
+          </form>
         </div>
-        <!-- /.modal-content -->
       </div>
-      <!-- /.modal-dialog -->
     </div>
-    <!-- /.modal -->
+  </div>
 
-    <!-- LOG IN -->
+  <!-- LOG IN MODAL -->
+  <div id="myModal1" class="modal fade rr-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="rr-modal-body">
+          <form id="login" action="/login" method="POST">
+            <h1 class="rr-modal-title">welcome back 🚌</h1>
+            <input name="email" type="email" placeholder="email" required class="rr-input" />
+            <input name="password" type="password" placeholder="password" required class="rr-input" />
+            <input type="submit" value="log me in" class="rr-btn rr-btn-block" />
+            <p class="rr-modal-footnote">
+              need an account? <a href="#myModal" id="registers" data-toggle="modal" data-target="#myModal">sign up</a>
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    </body>
+</body>
 
 </html>

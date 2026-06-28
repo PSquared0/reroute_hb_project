@@ -1,26 +1,22 @@
 {% extends 'base.html' %}
 {% block content %}
 
-
-<br>
-
-<div class="name_info">
-  <h2>Hello {{ user.fname|capitalize }} here are your ratings:</h2>
-<div class="container">
-<ul>
- 
-  {% for user_rating in user_ratings %}
-   <div class="talk-bubble">
-  <div class="talktext">
-    <li>Bus Line: {{ user_rating.bus_code }} Rating: {{ user_rating.rating }} Comments: {{ user_rating.comments }}</li>
-    </div>
-    </div>
-{% endfor %}
-</ul>
-</div>
+<div class="rr-hero">
+  <h1>hey {{ user.fname|capitalize }}! 🍨</h1>
+  <p>here's everything you've rated so far</p>
 </div>
 
-
-
+<div class="rr-card name_info">
+  <div class="container">
+    {% for user_rating in user_ratings %}
+    <div class="talk-bubble">
+      <div class="talktext">
+        <b>{{ user_rating.bus_code }}</b> &mdash; {{ user_rating.rating }} stars<br>
+        {{ user_rating.comments }}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
 
 {% endblock %}
