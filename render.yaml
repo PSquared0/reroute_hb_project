@@ -1,9 +1,3 @@
-databases:
-  - name: reroute-db
-    plan: free
-    region: oregon
-    postgresMajorVersion: "16"
-
 services:
   - type: web
     name: reroute-hb
@@ -14,9 +8,7 @@ services:
     startCommand: gunicorn server:app
     envVars:
       - key: DATABASE_URL
-        fromDatabase:
-          name: reroute-db
-          property: connectionString
+        sync: false
       - key: SECRET_KEY
         generateValue: true
       - key: FIVE_ELEVEN_API_KEY
